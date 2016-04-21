@@ -476,8 +476,8 @@ body
     font-size: 0.22rem;
     border-bottom: 1px solid #e1e1e1;
     color: #959595;
-
-    /* background-color: pink; */
+    /* html5开发移动页面去掉点击出现的透明阴影 */
+    -webkit-tap-highlight-color:rgba(255,255,255,0);
 }
 
 .users-cont .li_url{
@@ -504,6 +504,19 @@ body
     overflow: hidden;
 }
 
+.users-cont ul li .item input{
+    width: 1.86rem;
+    padding: 0.1rem;
+    font-family: '方正兰亭细黑简';
+    font-size: 0.22rem;
+    color: #959595;
+    border: 1px solid #fc8901;
+    border-radius: 0;
+    background-color: #fff;
+    -webkit-appearance: none;
+    outline:none;
+}
+
 .users-cont ul li .item a{
     float: right;
     color: #0297fd;
@@ -511,7 +524,8 @@ body
 
 /* 0000000000000000000000000000000000000000 */
 .li_sex .sex_inp .fl {
-    padding-right: 0.2rem;
+    width: 0.8rem;
+    margin-right: 0.22rem;
     float: left;
 }
 
@@ -665,7 +679,7 @@ body
     height: auto;
     width: auto;
     float: none;
-    margin: 0 10px 0 0;
+    margin: 0 0.22rem 0 0;
 }
 
 .select_arrow {

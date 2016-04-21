@@ -95,7 +95,7 @@
             </ul>
             <div class="free-panes">
                 <form class="free-pane" style="display: block;">
-                    <div class="users">
+<!--                     <div class="users">
                         <div class="users-personal">
                             <dl>
                                 <dt><img src="content/images/user/nan_pic.png"></dt>
@@ -130,9 +130,9 @@
 
                             </dl>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="profile">
+<!--                     <div class="profile">
                         <div class="users-edit">
                             <div class="title">
                                 <span>编辑个人资料</span>
@@ -181,7 +181,7 @@
                                     </div>
                                     <div class="item bind_phone" style="">
                                       <i style="color: #999;">还未绑定手机</i>
-                                      <a href="javascript:" class="bind">（立即绑定）</a>
+                                      <a href="user/bind.html" >（立即绑定）</a>
                                     </div>
                                 </li>
 
@@ -213,64 +213,12 @@
                                                 <div class="select_arrow"></div>
                                                 <div class="select_text_ui" style="min-width: 2.5em;">北京</div>
                                                 <select class="province" required="true" name="birthday_year">
-                                                    undefined
-                                                    <option value="北京">北京</option>
-                                                    <option value="天津">天津</option>
-                                                    <option value="河北">河北</option>
-                                                    <option value="山西">山西</option>
-                                                    <option value="内蒙古">内蒙古</option>
-                                                    <option value="辽宁">辽宁</option>
-                                                    <option value="吉林">吉林</option>
-                                                    <option value="黑龙江">黑龙江</option>
-                                                    <option value="上海">上海</option>
-                                                    <option value="江苏">江苏</option>
-                                                    <option value="浙江">浙江</option>
-                                                    <option value="安徽">安徽</option>
-                                                    <option value="福建">福建</option>
-                                                    <option value="江西">江西</option>
-                                                    <option value="山东">山东</option>
-                                                    <option value="河南">河南</option>
-                                                    <option value="湖北">湖北</option>
-                                                    <option value="湖南">湖南</option>
-                                                    <option value="广东">广东</option>
-                                                    <option value="广西">广西</option>
-                                                    <option value="海南">海南</option>
-                                                    <option value="重庆">重庆</option>
-                                                    <option value="四川">四川</option>
-                                                    <option value="贵州">贵州</option>
-                                                    <option value="云南">云南</option>
-                                                    <option value="西藏">西藏</option>
-                                                    <option value="陕西">陕西</option>
-                                                    <option value="甘肃">甘肃</option>
-                                                    <option value="青海">青海</option>
-                                                    <option value="宁夏">宁夏</option>
-                                                    <option value="新疆">新疆</option>
-                                                    <option value="香港">香港</option>
-                                                    <option value="澳门">澳门</option>
                                                 </select>
                                             </div>
                                             <div class="select_ui">
                                                 <div class="select_arrow"></div>
                                                 <div class="select_text_ui" style="min-width: 2.5em;">西城</div>
                                                 <select class="city" required="true" name="birthday_year">
-                                                    <option value="西城">西城</option>
-                                                    <option value="东城">东城</option>
-                                                    <option value="崇文">崇文</option>
-                                                    <option value="宣武">宣武</option>
-                                                    <option value="朝阳">朝阳</option>
-                                                    <option value="海淀">海淀</option>
-                                                    <option value="丰台">丰台</option>
-                                                    <option value="石景山">石景山</option>
-                                                    <option value="门头沟">门头沟</option>
-                                                    <option value="房山">房山</option>
-                                                    <option value="通州">通州</option>
-                                                    <option value="顺义">顺义</option>
-                                                    <option value="大兴">大兴</option>
-                                                    <option value="昌平">昌平</option>
-                                                    <option value="平谷">平谷</option>
-                                                    <option value="怀柔">怀柔</option>
-                                                    <option value="密云">密云</option>
-                                                    <option value="延庆">延庆</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -296,11 +244,11 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="preserved">
+<!--                     <div class="preserved">
                         <button type="submit" class="btn-long btn-purple" id="submit">保<i></i>存</button>
-                    </div>
+                    </div> -->
                 </form>
             </div>
         </div>
@@ -385,6 +333,54 @@
         //所在地
         $("a[data-v='szd']").click(function(){
             $("#txtIcity").show().focus().siblings().hide();
+            var selectHtml = '<span>所在地：</span><div class="select_ui"><div class="select_arrow"></div><div class="select_text_ui slect-sf" style="min-width: 2.5em;">北京</div><select class="province" required="true" name="birthday_year"></select></div><div class="select_ui"><div class="select_arrow"></div><div class="select_text_ui slect-city1" style="min-width: 2.5em;">西城</div><select class="city" required="true" name="birthday_year"></select></div>';
+            var $selectList = $(".selectList");
+            $selectList.on('click',function(){
+                var $parent = $(this).parent();
+                var _html = $parent.html();
+                $parent.html(selectHtml);
+                var url = "../mobile/json/area.json";
+                var areaJson;
+                var temp_html;
+                var oProvince = $(".province");
+                var oCity = $(".city");
+                //初始化省
+                var province = function(){
+                    $.each(areaJson, function(i, province){
+                        temp_html += "<option value='" + province.p + "'>" + province.p + "</option>";
+                    });
+                    $(".province").html(temp_html);
+                    oProvince.siblings('.select_text_ui').html(oProvince.val());
+                    city();
+                };
+                //赋值市
+                var city = function(){
+                    temp_html = "";
+                    var n = oProvince.get(0).selectedIndex;
+                    $.each(areaJson[n].c, function(i, city){
+                        temp_html += "<option value='" + city + "'>" + city + "</option>";
+                    });
+                    oCity.html(temp_html);
+                    oCity.siblings('.select_text_ui').html(oCity.val());
+                };
+                //选择省改变市
+                oProvince.change(function() {
+                    oProvince.siblings('.select_text_ui').html(oProvince.val())
+                    city();
+                    $thisdress = oProvince.val() + '-' + oCity.val();
+                });
+                oCity.change(function() {
+                    oCity.siblings('.select_text_ui').html(oCity.val());
+                     $thisdress = oProvince.val() + '-' + oCity.val();
+                });
+                //获取json数据
+                $.getJSON(url, function(data){
+                    areaJson = data;
+                    province();
+                    console.log(areaJson);
+                });
+            });
+
         });
         // 苹果点击问题
         // document.onclick = function(event)
@@ -440,29 +436,33 @@
         });
 
     };
+</script>
 
+<script>
     // 更换头像图片
     window.URL = window.URL || window.webkitURL;
-    var fileElem = document.getElementById("fileElem"),
-        fileList = document.getElementById("fileList");
+/*    var fileElem = document.getElementById("fileElem");*/
+    var  fileList = document.getElementById("fileList");
 
     function handleFiles(obj) {
         var files = obj.files,
-            img = new Image();
+                img = new Image();
         if (window.URL) {
             img.src = window.URL.createObjectURL(files[0]);
             img.width = 160;
-            img.onload = function(e) {
+            img.onload = function (e) {
                 window.URL.revokeObjectURL(this.src);
             };
-            $(fileList).html(img);
+            document.getElementById("fileList").innerHTML="";
+            document.getElementById("fileList").appendChild(img);
         } else if (window.FileReader) {
             var reader = new FileReader();
             reader.readAsDataURL(files[0]);
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 img.src = this.result;
                 img.width = 160;
-                $(fileList).html(img);
+                document.getElementById("fileList").innerHTML="";
+                document.getElementById("fileList").appendChild(img);
             };
         } else {
             //ie
@@ -472,13 +472,101 @@
             document.selection.empty();
             img.src = nfile;
             img.width = 160;
-            img.onload = function() {
+            img.onload = function () {
                 alert(nfile + "," + img.fileSize + " bytes");
             };
-            $(fileList).html(img);
+            document.getElementById("fileList").innerHTML="";
+            document.getElementById("fileList").appendChild(img);
+
         }
+
+           /* var r = /<[^>]*>/g
+            uploadForm = $("#uploadForm").attr('action','/upload?id_good='+$(".membero").html().replace(/[^0-9]/ig,""))
+                    ,success = function(d){
+                if (d.status==1) {
+
+                    console.log(d.file_url)
+                };
+            }
+            $('#uploadForm').off().submit();
+            $("#iframe").off().load(function(){
+                try{
+                    var d = $.parseJSON(this.contentWindow.document.body.innerHTML.replace(r,imgurl));
+                    success(d);
+                }catch(e){};
+            });*/
+/*      var  tmp=imgurl.split("/");//按照"/"分割
+        var cc = tmp[tmp.length-1];
+        console.log(cc);
+        var filename;
+        if(imgurl.indexOf("/")>0)//如果包含有"/"号 从最后一个"/"号+1的位置开始截取字符串
+        {
+            filename=imgurl.substring(iframs.lastIndexOf("/")+1,imgurl.length);
+        }
+        else
+        {
+            filename=imgurl;
+        }*/
+     /*   var r = /<[^>]*>/g*/
+      /*  var d = $.parseJSON(iframs.replace(/<[^>]*>/g,''));*/
+        var imgurl=$("#filename").val();
+/*        url=imgurl.split("\\");//这里要将 \ 转义一下
+        var imgname=url[url.length-1];*/
+        console.log(imgurl);
+        /*var iframs=$("#iframe").html(imgname);
+        $("#uploadForm").attr('action','http://940.com/upload?id_good='+$(".membero").html().replace(/[^0-9]/ig,""));*/
+
+        // var urlimg='http://940.com/upload'+$(".membero").html().replace(/[^0-9]/ig,"");
+   /*     $("#uploadForm").submit(function(data,event){
+            alert(1);
+        } );*/
+/*        var formData = new FormData($( "#uploadForm" )[0]);
+        $.ajax({
+            url: urlimg,
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            dataType:'jsonp',
+            jsonp: 'callback',
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                    alert(data.tips);
+            },
+            error: function (data) {
+                alert(data.tips);
+            }
+        });*/
+        //http://940.com/upload?id_good=上传接口
+/*        $('button').on('click', function() {
+
+            $('#imgurlform').on('submit', function() {
+                var title = $('input[name=title]').val(),
+                        content = $('textarea').val();
+
+                $(this).ajaxSubmit({
+                    async: false,
+                    cache: false,
+                    dataType:'jsonp',
+                    jsonp: 'callback',
+                    type: 'post', // 提交方式 get/post
+                    url: 'http://940.com/upload', // 需要提交的 url
+                    data: {
+                        'title': title,
+                        'content': content
+                    },
+                    success: function(data) {
+                        alert(data.tips);
+                    }
+                });
+                return false; // 阻止表单自动提交事件
+            });
+
+        });*/
+
+
     }
 </script>
-
 </body>
 </html>

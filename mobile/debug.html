@@ -1,115 +1,226 @@
-﻿<!doctype html>
-<html>
-<head>
-    <!--wap-->
-    <meta charset="utf-8">
-    <!-- width取值与页面定义的宽度一致 -->
-    <meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
-    <meta content="yes" name="apple-mobile-web-app-capable">
-    <meta content="black" name="apple-mobile-web-app-status-bar-style">
-    <meta content="telephone=no" name="format-detection">
-    <meta content="email=no" name="format-detection">
-    <!-- 百度禁止转码 -->
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <title>940电商学院 - 最专业的淘宝电商培训，店铺运营推广，电商培训领导者</title>
-    <!--css-->
-    <link rel="stylesheet" type="text/css" href="content/themes/debug.css"/>
-    <!--js-->
-    <script type="text/javascript" src="scripts/js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="scripts/js/slideout.min.js"></script>
-    <script type="text/javascript" src="scripts/page.js"></script>
+﻿<!DOCTYPE html>
+<!-- saved from url=(0035)http://192.168.16.153:88/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!-- <meta content="width=600px,target-densitydpi=300,user-scalable=no" name="viewport"> -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <title>Document</title>
+    <style type="text/css">
+        *{padding:0;margin: 0;font-family: '微软雅黑';list-style: none;}
+        html,body{width: :100%;height: 100%;}
+        #wrap{overflow: hidden;position: relative;padding-bottom: 60px;}
+        .input-bar{
+            width: 100%;
+            height: 50px;
+            bottom: 0px;
+            left: 0;
+            position: fixed;
+            background: red
+            display:-moz-box;
+            display:-webkit-box;
+            display:box;
+            padding: 6px 10px 6px 10px;
+            background: #f2f2f2;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            box-sizing: border-box;
+        }
+        .input-bar .com{
+            height: 100%;
+            display: block;
+            -webkit-box-flex: 1;
+            box-flex: 1;
+        }
+        .input-bar .com.area{width: 80%}
+        .input-bar .com.bnt{min-width: 50px;max-width: 50px;margin-left: 10px;border-radius: 2px;}
+        .input-bar .com .textarea{
+            display: block;
+            width: 100%;
+            height: 37px;
+            line-height: 22px;
+            margin-left: -1px;
+            border: 1px solid #ccc;
+            resize: none;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+            outline: none;
+            padding:2px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        .input-bar .com.bnt .btn-send{
+            display: inline-block;
+            height: 36px;
+            width: 100%;
+            line-height: 36px;
+            box-sizing: border-box;
+            text-align: center;
+            border-radius: 2px;
+            background: #ee6800;
+            color: #fff;
+            font-size: 14px;
+            text-shadow: 1px 0 0 rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+        }
+        #content{width: 100%;overflow-y: auto;height:-webkit-calc(100% - 80px);height:calc(100% - 80px);padding-bottom: 20px;}
+        #content ul{padding: 0px 0 0px;margin: 0 auto;max-width: 700px;}
+        #content ul .msg-time {
+            color: #999;
+            font-size: 12px;
+            line-height: 12px;
+            text-align: center;
+            letter-spacing: 1px;
+            margin: 10px 0 0;
+            text-shadow: 1px 1px 0 white;
+            font: 14px/1.5 "微软雅黑", Tahoma, Arial, "宋体";
+        }
+        .msg-worker, .msg-visitor {
+            padding-left: 52px;
+            min-height: 34px;
+            margin: 10px 0 0;
+            position: relative;
+        }
+
+        .chat-content .msg-worker .chat-word, .chat-content .msg-visitor p {
+            display: inline-block;
+            max-width: 450px;
+            min-height: 15px;
+            font-size: 15px;
+            text-align: left;
+            line-height: 18px;
+            padding: 12px;
+            margin-right: 17px;
+            border: 1px solid #ddd;
+            position: relative;
+            border-radius: 4px;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+        .chat-content .msg-worker .chat-word {
+            background: #fff;
+            box-shadow: 1px 1px 2px rgba(55, 55, 55, 0.1);
+        }
+        .chat-content .msg-visitor {
+            text-align: right;
+            padding-left: 70px;
+            padding-right: 1px;
+        }
+        .chat-content .msg-visitor p {
+            background: #ffebdc;
+            box-shadow: -1px 1px 2px rgba(55, 55, 55, 0.1);
+        }
+        .chat-content .msg-worker .chat-word i, .chat-content .msg-visitor p i {
+            display: block;
+            width: 10px;
+            height: 12px;
+            position: absolute;
+            top: 7px;
+            background-image: url(http://www1.53kf.com/mobile/img/icon-sprites.png?asdadas111d11);
+        }
+        .chat-content .msg-visitor p i {
+            background-position: -69px 0;
+            right: -10px;
+        }
+        .chat-content .msg-worker .chat-word i {
+            background-position: -59px 0;
+            left: -10px;
+        }
+        .chat-content .msg-worker .avatar2 {
+            display: block;
+            width: 30px;
+            height: 30px;
+           /*  background: url(http://www1.53kf.com/mobile/img/default_logo.png); */
+            position: absolute;
+            top: 0;
+            left: 7px;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="scripts/debug/index.css">
+    <script src="scripts/debug/client.socket.js"></script>
+    <script type="text/javascript">
+        window.onload = function(){
+            var btnSend = document.getElementById('btn-send');
+            var textarea = document.getElementById('textarea');
+            var wrap = document.getElementById('wrap');
+            var content = document.getElementById('content')
+            var oUl = content.getElementsByTagName('ul')[0];
+            
+            var socket = socket = io.connect('http://192.168.16.153:88');
+            socket.on('aa', function(data) {
+                var myDate = new Date();
+                var t = myDate.getMonth()+1+'月'+myDate.getDate()+'日 '+myDate.getHours()+':'+myDate.getMinutes();
+                oUl.innerHTML+='<li class="msg-time" name="msg-time">'+t+'</li>\
+                                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>'+data+'</div></li>'
+            });
+
+            btnSend.onclick = function(){
+
+                var myDate = new Date();
+                var t = myDate.getMonth()+1+'月'+myDate.getDate()+'日 '+myDate.getHours()+':'+myDate.getMinutes();
+
+                oUl.innerHTML += '<li class="msg-time" name="msg-time">'+t+'</li>\
+                                  <li class="msg-visitor"><p><i></i>'+textarea.value+'</p></li>';
+                socket.emit('bb', textarea.value);
+                textarea.value = ''
+                document.body.scrollTop = oUl.offsetHeight-document.documentElement.clientHeight + 100
+            }
+            
+            document.body.scrollTop = oUl.offsetHeight-document.documentElement.clientHeight + 100
+            
+        }
+    </script>
 </head>
-
 <body>
-
-<!-- 左侧栏菜单 -->
-<div id="menu" class="menu">
-    <ul>
-        <li>
-            <a href="###">
-                <i class="menu-icon1"></i>
-                <span>907350373@qq.com</span>
-            </a>
-        </li>
-        <li>
-            <a href="views.html">
-                <i class="menu-icon2"></i>
-                <span>电商工具</span>
-            </a>
-        </li>
-        <li>
-            <a href="shopGuide.html">
-                <i class="menu-icon3"></i>
-                <span>开店指南</span>
-            </a>
-        </li>
-        <li>
-            <a href="free.html">
-                <i class="menu-icon4"></i>
-                <span>视频教程</span>
-            </a>
-        </li>
-        <li>
-            <a href="successful.html">
-                <i class="menu-icon5"></i>
-                <span>成功案例</span>
-            </a>
-        </li>
-        <li>
-            <a href="lecturer.html">
-                <i class="menu-icon6"></i>
-                <span>讲师团队</span>
-            </a>
-        </li>
-        <li>
-            <a href="###">
-                <i class="menu-icon7"></i>
-                <span>退出登录</span>
-            </a>
-        </li>
-    </ul>
-</div>
-
-<!-- 商品面板 -->
-<div id="main" class="panel">
-    <!-- header -->
-    <header class="header">
-        <div class="header-user js-slideout-toggle"><i></i></div>
-        <a href="login.html" class="header-menu"><i></i></a>
-        <div class="header-title"><i></i></div>
-    </header>
-
-<!-- 0000000000000000000000000 -->
-
-
-
-
-
-
-
-
-
-    <!-- footer -->
-    <footer>
-        <div class="footer-nav">
-            <a href="index.html">
-                <img src="content/images/940/footer_icon1.jpg" alt="返回首页">
-            </a>
-            <a href="aboutUs.html">
-                <img src="content/images/940/footer_icon2.jpg" alt="关于我们">
-            </a>
-            <a href="courses.html">
-                <img src="content/images/940/footer_icon3.jpg" alt="课程介绍">
-            </a>
-            <a href="#">
-                <img src="content/images/940/footer_icon4.jpg" alt="在线报名">
-            </a>
-            <a href="#" class="footer-animation">
-                <img src="content/images/940/footer_icon5.gif" class="footer-icon5" alt="在线咨询">
-            </a>
+    <div id="wrap">
+        <div id="content">
+            <ul class="chat-content">
+                <!-- <li class="msg-time" name="msg-time">4月8日 13:14</li>
+                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>美国上市公司--达内欢迎您！目前达内有免费试读30天，只需留下手机号码即可，限额40名，抢到就是赚到！</div></li>
+                <li class="msg-time" name="msg-time">4月8日 13:14</li>
+                <li class="msg-visitor"><p><i></i>5656</p></li>
+                <li class="msg-time" name="msg-time">4月8日 13:14</li>
+                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>美国上市公司--达内欢迎您！目前达内有免费试读30天，只需留下手机号码即可，限额40名，抢到就是赚到！</div></li>
+                <li class="msg-time" name="msg-time">4月8日 13:14</li>
+                <li class="msg-visitor"><p><i></i>5656</p></li>
+                <li class="msg-time" name="msg-time">4月8日 13:14</li>
+                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>美国上市公司--达内欢迎您！目前达内有免费试读30天，只需留下手机号码即可，限额40名，抢到就是赚到！</div></li>
+                <li class="msg-time" name="msg-time">4月8日 13:14</li>
+                <li class="msg-visitor"><p><i></i>5656</p></li>
+                <li class="msg-time" name="msg-time">4月8日 13:14</li>
+                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>美国上市公司--达内欢迎您！目前达内有免费试读30天，只需留下手机号码即可，限额40名，抢到就是赚到！</div></li>
+                <li class="msg-time" name="msg-time">4月8日 13:14</li>
+                <li class="msg-visitor"><p><i></i>5656</p></li>
+                <li class="msg-time" name="msg-time">4月8日 13:14</li>
+                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>美国上市公司--达内欢迎您！目前达内有免费试读30天，只需留下手机号码即可，限额40名，抢到就是赚到！</div></li>
+                <li class="msg-time" name="msg-time">4月8日 13:14</li>
+                <li class="msg-visitor"><p><i></i>5656</p></li>
+                <li class="msg-time" name="msg-time">4月8日 13:14</li>
+                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>美国上市公司--达内欢迎您！目前达内有免费试读30天，只需留下手机号码即可，限额40名，抢到就是赚到！</div></li>
+                <li class="msg-time" name="msg-time">4月8日 13:14</li>
+                <li class="msg-visitor"><p><i></i>5656</p></li>
+                <li class="msg-time" name="msg-time">4月8日 13:14</li>
+                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>美国上市公司--达内欢迎您！目前达内有免费试读30天，只需留下手机号码即可，限额40名，抢到就是赚到！</div></li>
+                <li class="msg-time" name="msg-time">4月8日 13:14</li>
+                <li class="msg-visitor"><p><i></i>5656</p></li>
+                <li class="msg-time" name="msg-time">4月8日 13:14</li>
+                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>美国上市公司--达内欢迎您！目前达内有免费试读30天，只需留下手机号码即可，限额40名，抢到就是赚到！</div></li>
+                <li class="msg-time" name="msg-time">4月8日 13:14</li>
+                <li class="msg-visitor"><p><i></i>大概大概豆腐干豆腐干豆腐干豆腐干</p></li> -->
+<!--             <li class="msg-time" name="msg-time">4月8日 14:32</li>                                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>豆腐干地方</div></li><li class="msg-time" name="msg-time">4月8日 14:32</li>                                <li class="msg-visitor"><p><i></i>和大厦的回家看
+</p></li><li class="msg-time" name="msg-time">4月8日 14:32</li>                               <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>发挥规范化</div></li><li class="msg-time" name="msg-time">4月8日 14:32</li>                                <li class="msg-visitor"><p><i></i>hoho
+</p></li><li class="msg-time" name="msg-time">4月8日 14:33</li>                               <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>突然讨厌热天</div></li><li class="msg-time" name="msg-time">4月8日 14:33</li>                             <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>lol</div></li><li class="msg-time" name="msg-time">4月8日 14:33</li>                                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>High </div></li><li class="msg-time" name="msg-time">4月8日 14:34</li>                              <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>哈哈哈</div></li><li class="msg-time" name="msg-time">4月8日 14:34</li>                                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>寄过来</div></li><li class="msg-time" name="msg-time">4月8日 14:34</li>                                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>l k k</div></li> -->
+            </ul>
         </div>
-    </footer>
-</div>
+        <div class="input-bar">
+            <div class="com area"><textarea class="textarea" id="textarea"></textarea></div>
+            <div class="com bnt"><a href="javascript:;" class="btn-send" id="btn-send">发送</a></div>
+        </div>
+    </div>
 
-</body>
-</html>
+</body></html>

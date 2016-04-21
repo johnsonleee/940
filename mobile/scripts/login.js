@@ -195,6 +195,7 @@ $(function() {
                 if (data.status == 1) {
                     alert(data.tips); //.
                     // alert("注册成功！");
+                    window.location.href = "login.html";
                 } else if (data.status == -9) {
                     alert(data.tips); //.
                     // alert("邮箱格式不对！");
@@ -240,7 +241,7 @@ $(function() {
             user_name: $(".login-user").val(),
             password: $(".login-passw").val()
         });
-        console.log(paramlogin);
+        // console.log(paramlogin);
         $.ajax({
             async: false,
             type: "get",
@@ -249,6 +250,7 @@ $(function() {
             data: paramlogin,
             jsonp: 'callback',
             success: function(data) {
+                console.log(paramlogin);
                 if (data.status == 1) {
                     alert(data.tips);
                     // HTML5 LocalStorage 本地存储
@@ -256,7 +258,6 @@ $(function() {
                     // alert(JSON.stringify(json));
                     localStorage.member = JSON.stringify(json);//设置a为"3"
                     window.location.href = "user.html";
-                    
                 } else if (data.status == -9) {
                     alert(data.tips);
                 } else {

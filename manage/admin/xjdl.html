@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="author" content="www.frebsite.nl" />
+    <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <title></title>
+
+    <link type="text/css" rel="stylesheet" href="../css/docs.css" />
+    <link type="text/css" rel="stylesheet" href="../css/mmenu.css" />
+    <link type="text/css" rel="stylesheet" href="../css/zebra_datepicker.css" />
+
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery.mmenu.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('nav#menu').mmenu();
+        });
+    </script>
+</head>
+<body>
+<div id="page">
+    <div id="header">
+        <a href="javascript:history.go(-1)" class="ui-back">返回</a>
+        <!--<a href="#menu"></a>-->
+        下级代理
+        <span  id="search">查询</span>
+    </div>
+    <div id="content">
+        <div class="pwd-list" style="display: block;">
+            <div class="meberport-item">
+                <label >注册时间：<input style="margin-left:0px;width:75%" type="text" id="datepicker-example1" class="date"></label>
+                <label>至<input type="text" style="margin-left:64px;width:75%"  class="date" id="datepicker-example2"></label>
+                <label>会员账号：<input type="text" style="width:75%"> </label>
+            </div>
+            <button class="pwd-button">查询</button>
+        </div>
+        <div class="pesonal-grad">
+            <div class="ui-usermant">
+                <div class="ui-title-user">会员账号：dreams<span class="ui-arrow-down"></span></div>
+                <div class="ui-user-list">
+                    <div class="game-list">
+                        <div class="game-item">
+                            <dl>
+                                <dt>推广编号</dt>
+                                <dd>113</dd>
+                            </dl>
+                            <dl>
+                                <dt>姓名</dt>
+                                <dd>dremnms</dd>
+                            </dl>
+                            <dl>
+                                <dt>上级编号</dt>
+                                <dd>112</dd>
+                            </dl>
+                            <dl>
+                                <dt>直属下属</dt>
+                                <dd>dremnms</dd>
+                            </dl>
+                            <dl>
+                                <dt>下级合集</dt>
+                                <dd>dremnms</dd>
+                            </dl>
+                            <dl>
+                                <dt>注册时间</dt>
+                                <dd>2016.1.1</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-usermant">
+                <div class="ui-title-user">会员账号：dreams<span class="ui-arrow-down"></span></div>
+                <div class="ui-user-list">
+                    <div class="game-list">
+                        <div class="game-item">
+                            <dl>
+                                <dt>推广编号</dt>
+                                <dd>113</dd>
+                            </dl>
+                            <dl>
+                                <dt>姓名</dt>
+                                <dd>dremnms</dd>
+                            </dl>
+                            <dl>
+                                <dt>上级编号</dt>
+                                <dd>112</dd>
+                            </dl>
+                            <dl>
+                                <dt>直属下属</dt>
+                                <dd>dremnms</dd>
+                            </dl>
+                            <dl>
+                                <dt>下级合集</dt>
+                                <dd>dremnms</dd>
+                            </dl>
+                            <dl>
+                                <dt>注册时间</dt>
+                                <dd>2016.1.1</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav id="menu">
+        <ul>
+            <li><h1>当前账号：admin</span></h1></li>
+            <li><a href="pesonal.html">个人资料</a></li>
+            <li><a href="newspasswd.html" >修改密码</a></li>
+            <li><a href="umagt.html"    class="active">用户管理</a></li>
+            <li><a href="comreport.html">返佣报表</a></li>
+            <li><a href="mebreport.html" >会员报表</a></li>
+            <li><a href="wdrawal.html">佣金提款</a></li>
+            <li><a href="banknews.html">银行修改</a></li>
+            <li><a href="static.html">数据统计</a></li>
+            <li><a href="email.html">我的站内信</a></li>
+            <li><a href="history.html">历史公告</a></li>
+            <li><h2>退出当前账号</h2></li>
+        </ul>
+    </nav>
+</div>
+<script type="text/javascript" src="../js/zebra_datepicker.js"></script>
+<script>
+    $('#datepicker-example1').Zebra_DatePicker();
+    $('#datepicker-example2').Zebra_DatePicker();
+    $(document).ready(function(){
+        $("#search").bind("click",function(){
+            $(".pwd-list").stop().toggle();
+        })
+    })
+</script>
+<script>
+    $(function () {
+        $(".ui-title-user").click(function () {
+            $(this).children().toggleClass("ui-arrow-up");
+            $(this).siblings(".ui-user-list").toggle();
+        });
+    })
+</script>
+</body>
+</html>

@@ -338,8 +338,9 @@ body
 }
 
 .wrap_list .gonggao {
-    width: 90%;
-    margin: 0.5rem auto;
+    width: calc(100% - 0.64rem);
+    width: -webkit-calc(100% - 0.64rem);
+    margin: 0.5rem 0.32rem;
     background: #fff;
 }
 
@@ -367,9 +368,10 @@ body
     color: #666;
 } */
 
-/* .gonggao img {
-    max-width: 90%;
-} */
+.gonggao img {
+    max-width: 100%;
+    text-indent: 0;
+}
 
 .gonggao .right {
     text-align: right;
@@ -387,7 +389,10 @@ body
     padding: 0.03rem 0;
     text-indent: 0;
     line-height: 0.3rem;
-    font-size: 0.22rem;
+    font-size: 0.24rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .gonggao .left p a {

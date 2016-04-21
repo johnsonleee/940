@@ -94,7 +94,7 @@
             </ul>
 
             <!-- 公告详情 -->
-<!--             <div class="wrap_list" id="wrap_list">
+            <div class="wrap_list" id="wrap_list">
                 <div class="gonggao">
                     <h1>天猫国际年货节落地天津 将建O2O体验中心</h1>
                     <strong>亲爱的互联支付用户：</strong>
@@ -116,9 +116,7 @@
                         </p>
                     </div>
                 </div>
-            </div> -->
-
-
+            </div>
         </div>
     </div>
 
@@ -149,44 +147,55 @@
 <script type="text/javascript">
 $(function(){
 
+    ;function formatData(r) {
+        var a = new Array();
+        var c = Object.prototype.toString.call(r);
+        r = /String/.test(c) ? eval('(' + r + ')') : r;
+        var d = Object.prototype.toString.call(r);
+        // console.log(d);   // [object Object]
+        a = /Array/.test(d) ? r : a[0] = r;
+        return a;
+    }
+    var url =location.href+"?id=1";
+    var id=url.match(/id=.{1}/)[0].substr(3);
+    var   paramid = $.param({
+        id: id
+    });
     $.ajax({
         async: false,
         type: "get",
-        url: "http://940.com/noticeInfo?id=4",
+        url: "http://940.com/noticeInfo",
         dataType: 'jsonp',
         jsonp: 'callback',
-        // data: paramid,
+         data: paramid,
         processData: false,
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
         success: function(data) {
             var wrapList = $(".wrap_list");
             if (data.status == 1) {
                 var item = data.notice;
+                console.log(item.content.length);
+                var lastid=data.last;
+                var nextid=data.next;
+                console.log(paramid);
                 wrapList.html("");
-                var content = "";
+                   var  content = "";
 
-                content = "";
-                content += "<div class='wrap_list' id='wrap_list'>" +
-                            "<div class='gonggao'>" +
+                if(lastid.id==0){
+                    var first="<a class='last' href=\'#\'>没有了</a>";
+                }else{
+                   var first="<a class='last' href=\"notice.html?id=" + lastid.id + "\">" + lastid.title + "</a>";
+                }
+                        content += "<div class='gonggao'>" +
                             "<h1>" + item.title + "</h1>" +
                             "<strong>亲爱的互联支付用户：</strong>" +
                             "<p>" + item.content + "</p>" +
                             "<div class='right'>" + item.author + "<br>" + item.time.substr(0.10) + "</div>" +
                             "<div class='left'>" +
-                            "<p>上一条：<a href='javascript:' class='last'>没有了</a></p>" +
-                            "<p>下一条：<a href='javascript:' class='next'>2016淘宝店铺运营方法解读-最新淘宝干货分享</a></p>" +
-                            "</div>" +
+                            "<p>上一条："+first+"</a></p>" +
+                            "<p>下一条：<a class='next' href=\"notice.html?id=" + nextid.id + "\">" + nextid.title + "</a></p>" +
                             "</div>" +
                             "</div>";
-
-                // 000000000000
-                var notice = "";
-                notice = "";
-                var reg = /\d+/g;
-                notice += item.content;
-                var str=notice.replace(/(\d+、[s\S]+)?&nbsp;/g, '');
-
-                wrapList.append(str);
                 wrapList.append(content);
             }
 

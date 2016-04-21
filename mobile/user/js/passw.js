@@ -3,9 +3,9 @@
     document.addEventListener('DOMContentLoaded', function() {
         var html = document.documentElement;
         var windowWidth = html.clientWidth;
-/*        if (windowWidth >= 540) {
-            windowWidth = 540;
-        }*/
+        /*        if (windowWidth >= 540) {
+                    windowWidth = 540;
+                }*/
         html.style.fontSize = windowWidth / 6.4 + 'px';
     }, false);
 })();
@@ -13,44 +13,44 @@
 $(function() {
     // 注册表单验证
     $(".passw-form").validate({
-        rules:{
-            username:{
-                required:true,  // 必填
-                minlength:6,    // 最少6个字符
-                maxlength:12,   // 最多12个字符
-/*                remote:{
-                    url:"http://kouss.com/demo/Sharelink/remote.json",  // 用户名重复检查，别跨域调用
-                    type:"post",
-                }*/
+        rules: {
+            username: {
+                required: true, // 必填
+                minlength: 6, // 最少6个字符
+                maxlength: 12, // 最多12个字符
+                /*                remote:{
+                                    url:"http://kouss.com/demo/Sharelink/remote.json",  // 用户名重复检查，别跨域调用
+                                    type:"post",
+                                }*/
             },
-            password:{
-                required:true,
-                minlength:6,
-                maxlength:12,
+            password: {
+                required: true,
+                minlength: 6,
+                maxlength: 12,
             },
-            confirm_password:{
-                required:true,
-                minlength:6,
-                equalTo:'.password'
+            confirm_password: {
+                required: true,
+                minlength: 6,
+                equalTo: '.password'
             }
         },
         // 错误信息提示
-        messages:{
-            username:{
-                required:"必须填写旧密码",
-                minlength:"旧密码至少为6个字符",
-                maxlength:"旧密码至多为12个字符",
+        messages: {
+            username: {
+                required: "必须填写旧密码",
+                minlength: "旧密码至少为6个字符",
+                maxlength: "旧密码至多为12个字符",
                 remote: "用户名已存在",
             },
-            password:{
-                required:"必须填写新密码",
-                minlength:"密码至少为6个字符",
-                maxlength:"密码至多为12个字符",
+            password: {
+                required: "必须填写新密码",
+                minlength: "密码至少为6个字符",
+                maxlength: "密码至多为12个字符",
             },
-            confirm_password:{
+            confirm_password: {
                 required: "请再次输入新密码",
                 minlength: "确认密码不能少于6个字符",
-                equalTo: "两次输入密码不一致",   // 与另一个元素相同
+                equalTo: "两次输入密码不一致", // 与另一个元素相同
             }
 
         }
@@ -90,13 +90,12 @@ $(function() {
     function formatData(r) {
         var a = new Array();
         var c = Object.prototype.toString.call(r);
-        r = /String/.test(c) ? eval('(' + r +')') : r;
+        r = /String/.test(c) ? eval('(' + r + ')') : r;
         var d = Object.prototype.toString.call(r);
         // console.log(d);   // [object Object]
-        a = /Array/.test(d) ? r : a[0]=r;
+        a = /Array/.test(d) ? r : a[0] = r;
         return a;
     }
-
 
     var storage = window.localStorage;
     var json_data = JSON.parse(storage.getItem("member"));
@@ -105,32 +104,23 @@ $(function() {
     var ajaxPane = $('.passw-form');
     ajaxPane.bind('submit', function(event) {
         event.preventDefault();
-        var modify = $.param({
+        var mpasword = $.param({
             user_name: json_data.u,
-
-            new: $(".newPassword").val(),
+            new_password:$(".newPassword").val(),
             password:$(".oldpassword").val()
-            /*gender: $("i.selected").attr("data-s"),*/
         });
         $.ajax({
-            async: false,
+          /*  async: false,*/
             type: "get",
             url: 'http://940.com/updatePassword',
             dataType: 'jsonp',
-            data: modify,
             jsonp: 'callback',
+            data: mpasword,
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
             success: function(data) {
-                data = formatData(data);
-              /*  console.log(modify);*/
-                console.log(data);
+                console.log(mpasword);
                 if (data.status == 1) {
                     alert(data.tips);
-                    // HTML5 LocalStorage 本地存储
-                    var json = {"u":$(".login-user").val(),"password":$(".login-passw").val()};
-                    // alert(JSON.stringify(json));
-                    localStorage.member = JSON.stringify(json);//设置a为"3"
-                    window.location.href = "../user.html";
                 } else if (data.status == -9) {
                     alert(data.tips);
                 } else {
@@ -140,5 +130,7 @@ $(function() {
         });
 
     });
+
+
 
 });

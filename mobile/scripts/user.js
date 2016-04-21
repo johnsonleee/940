@@ -65,6 +65,7 @@ $(function() {
     //     });
     // });
 
+    // user
     var storage = window.localStorage;
     var json_data = JSON.parse(storage.getItem("member"));
     console.log(json_data.u);
@@ -72,15 +73,15 @@ $(function() {
     function formatData(r) {
         var a = new Array();
         var c = Object.prototype.toString.call(r);
-        r = /String/.test(c) ? eval('(' + r +')') : r;
+        r = /String/.test(c) ? eval('(' + r + ')') : r;
         var d = Object.prototype.toString.call(r);
         // console.log(d);   // [object Object]
-        a = /Array/.test(d) ? r : a[0]=r;
+        a = /Array/.test(d) ? r : a[0] = r;
         return a;
     }
     var listdata = $.param({
         user_name: json_data.u,
-        password:json_data.password
+        password: json_data.password
     });
 
     // 绑数据
@@ -89,15 +90,16 @@ $(function() {
         url: 'http://940.com/userInfo',
         dataType: 'jsonp',
         processData: false,
-        data:listdata,
+        data: listdata,
         contentType: "application/x-www-form-urlencoded; charset=utf-8",
         success: function(data) {
-          var  data = formatData(data);
+            console.log(data.s);
+            var data = formatData(data);
             // 性别
             var list = $('.free-pane');
             var sex = '';
             list.html("");
-            if (data.s = 1) {
+            if (data.s==0) {
                 sex = "<div class='fl'>" +
                     "<i data-s='1' class='selected'></i>" +
                     "<strong class='icon_nan'>男</strong>" +
@@ -106,13 +108,22 @@ $(function() {
                     "<i data-s='2'></i>" +
                     "<strong class='icon_nv'>女</strong>" +
                     "</div>";
-            } else if (data.s = 2) {
+            }else if (data.s==1) {
                 sex = "<div class='fl'>" +
                     "<i data-s='1' class='selected'></i>" +
                     "<strong class='icon_nan'>男</strong>" +
                     "</div>" +
                     "<div class='fl'>" +
                     "<i data-s='2'></i>" +
+                    "<strong class='icon_nv'>女</strong>" +
+                    "</div>";
+            } else if (data.s==2) {
+                sex = "<div class='fl'>" +
+                    "<i data-s='1'></i>" +
+                    "<strong class='icon_nan'>男</strong>" +
+                    "</div>" +
+                    "<div class='fl'>" +
+                    "<i data-s='2' class='selected'></i>" +
                     "<strong class='icon_nv'>女</strong>" +
                     "</div>";
             }
@@ -121,13 +132,13 @@ $(function() {
             pesonal += "<div class='users'>" +
                 "<div class='users-personal'>" +
                 "<dl>" +
-                "<dt><img src='content/images/user/nan_pic.png'></dt>" +
+                "<dt><img src='" + data.im + "'></dt>" +
                 "<dd>" +
                 "<i>学员：" + data.r + "</i>" +
                 "</dd>" +
                 "<dd>" +
                 "<span>登录邮箱：" + data.u + "</span>" +
-                "<span class='right'>编号：" + data.o + "</span>" +
+                "<span class='right membero'>编号：" + data.o + "</span>" +
                 "</dd>" +
                 "<dd>" +
                 "<div class='acc_rank' id='acc_data'>" +
@@ -213,7 +224,7 @@ $(function() {
                 "<li class='li_yy'>" +
                 "<span>YY：</span>" +
                 "<div class='item revise_inp'>" +
-                "<i class='modify-yy'>" + data.y + "</i>" +
+                "<i class='modify-yy'>" + data.yy + "</i>" +
                 "<a data-v='yy' href='javascript:' id='txtiyy'>（修改）</a>" +
                 "<input id='txtIyy' type='text' class='xg_txt' style='display: none;'>" +
                 "</div>" +
@@ -297,16 +308,26 @@ $(function() {
                 "<div class='upload'>" +
                 "<dl>" +
                 "<dt id='fileList'>" +
-                // "<img src='content/images/user/" + data.im + "'>" +
+                "<img src='" + data.im + "'>" +
                 "</dt>" +
-                "<dd>" +
-                "<p>上传支持JPG、PNG、BMP格式，</p>" +
-                "<p>不超过150KB最佳尺寸为145x145像素。</p>" +
-                "</dd>" +
-                "<dd class='ipt'>" +
-                "<a href='###'>点此更换图片</a>" +
-                "<input type='file' id='fileElem' multiple accept='image/*' onchange='handleFiles(this)'>" +
-                "</dd>" +
+                "<dd>"+
+                "<form id='imgurlform'   target='form'  enctype='multipart/form-data' method='post' action='http://www.940.com/upload?id_good='"+data.o+"?&client=1'>" +
+                " <input type='hidden' name='id_good' value='"+data.o+"'><input type='file' name='file1' id='filename' onchange='handleFiles(this)'><br/>" +
+                " <input type='submit' id='imgsubmit' value='提交'>" +
+                " </form>"+
+                "</dd>"+
+                //"<form id='uploadForm' target='form' method='post' enctype='multipart/form-data' action='http://940.com/upload'>"+
+               // "<dd>" +
+                //"<p>上传支持JPG、PNG、BMP格式，</p>" +
+               // "<p>不超过150KB最佳尺寸为145x145像素。</p>" +
+              //  "</dd>" +
+               // "<dd class='ipt'>" +
+                //"<a href='###' onchange='handleFiles(this)'>点此更换图片</a>" +
+              // "<input onchange='javascript:setImagePreview();' id='id_good' value='1000473'>"+
+                //"<input type='file' id='fileElem' multiple accept='image/*' onchange='handleFiles(this)'>" +
+               // "</dd>" +
+                "</form>"+
+                "<iframe id='iframe' name='form' style='display:none;'></iframe>"+
                 "</dl>" +
                 "</div>" +
                 "</li>" +
@@ -314,48 +335,76 @@ $(function() {
                 "</div>" +
                 "</div>" +
                 "<div class='preserved'>" +
-                "<button type='submit' class='btn-long btn-purple' id='submit'>保<i></i>存</button>" +
+                "<button type='submit' class='btn-long btn-purple' id='savesubmit'>保<i></i>存</button>" +
                 "</div>";
 
             list.append(pesonal);
         }
     });
-
-
+    var ajaxPane1 = $('#imgurlform');
+    ajaxPane1.bind('submit', function(event) {
+        ajaxPane1.attr('action','http://m.940.com/upload?id_good='+$(".membero").html().replace(/[^0-9]/ig,""))+"&client=1";
+        alert(1);
+        event.preventDefault();
+        var imgurl='http://m.940.com/upload?id_good='+$(".membero").html().replace(/[^0-9]/ig,"");
+        var formData = new FormData($("#imgurlform")[0]);
+        $.ajax({
+            url: imgurl,
+            type: 'POST',
+            data: formData,
+            async: false,
+            cache: false,
+            dataType:'json',
+            // jsonp: 'callback',
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                alert(data.tips);
+            },
+            error: function (data) {
+                alert(data.tips);
+            }
+        });
+        return false;
+    });
     // 修改-提交
     var ajaxPane = $('.free-pane');
     ajaxPane.bind('submit', function(event) {
         event.preventDefault();
+        var r = /<[^>]*>/g;
+        document.domain = "m.940.com";
+        var forprofile=$(window.frames['form'].document.body).html();
+       /* var forprofile=$("#iframe").text();*/
+       var  jsonimg=$.parseJSON(forprofile);
+       console.log(jsonimg.file_url);
+        console.log(forprofile);
         var modify = $.param({
             user_name: json_data.u,
-            password:json_data.password,
-            realname: $(".modify-name").text(),
-            /*gender: $("i.selected").attr("data-s"),*/
             qq: $(".modify-qq").text(),
-            yy: $(".modify-yy").text()
-          /*  address: $(".modify-city").text()*/
+            yy: $(".modify-yy").text(),
+            gender: $("i.selected").attr("data-s"),
+            profile:jsonimg.file_url,
+            address: $thisdress,
+            realname:function(){
+                return  $(".modify-name").val()?0:$(".modify-name").val();
+            },
+            password: json_data.password
         });
         $.ajax({
             async: false,
-            type: "get",
-            url: 'http://940.com/saveUserInfo',
-            dataType: 'jsonp',
+            type: "post",
+            url: 'http://www.940.com/saveUserInfo',
+            dataType: 'json',
+            // jsonp: 'callback',
             data: modify,
-            jsonp: 'callback',
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
             success: function(data) {
-                 data = formatData(data);
-            console.log(modify);
-
-                var item=data.sududa;
+                data = formatData(data);
+                console.log(modify);
+                var item = data.sududa;
                 console.log(item.tips);
                 if (item.status == 1) {
                     alert(item.tips);
-                  /*  // HTML5 LocalStorage 本地存储
-                    var json = {"u":$(".login-user").val(),"password":$(".login-passw").val()};
-                    // alert(JSON.stringify(json));
-                    localStorage.member = JSON.stringify(json);//设置a为"3"*/
-                   /* window.location.href = "user.html";*/
                 } else if (item.status == -9) {
                     alert(item.tips);
                 } else {
@@ -366,8 +415,48 @@ $(function() {
 
     });
 
+    // // 修改-提交
+    // var ajaxPane = $('.free-pane');
+    // ajaxPane.bind('submit', function(event) {
+    //     event.preventDefault();
+    //     var modify = $.param({
+    //         user_name: json_data.u,
+    //         qq: $(".modify-qq").text(),
+    //         yy: $(".modify-yy").text(),
+    //         gender: $("i.selected").attr("data-s"),
+    //         profile: $("#fileList img").attr("src"),
+    //         address: $(".modify-city").text(),
+    //         /* realname: $(".modify-name").text(),*/
+    //         realname:function(){
+    //             return  $(".modify-name").val()?0:$(".modify-name").val();
+    //         },
+    //         password: json_data.password
+    //     });
+    //     $.ajax({
+    //         async: false,
+    //         type: "get",
+    //         url: 'http://940.com/saveUserInfo',
+    //         dataType: 'jsonp',
+    //         jsonp: 'callback',
+    //         data: modify,
+    //         contentType: "application/x-www-form-urlencoded; charset=utf-8",
+    //         success: function(data) {
+    //             data = formatData(data);
+    //             console.log(modify);
 
+    //             var item = data.sududa;
+    //             console.log(item.tips);
+    //             if (item.status == 1) {
+    //                 alert(item.tips);
+    //             } else if (item.status == -9) {
+    //                 alert(item.tips);
+    //             } else {
+    //                 alert("item.tips");
+    //             }
+    //         }
+    //     });
 
+    // });
 
 
 });
