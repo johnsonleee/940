@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title></title>
+    <link href="../css/index.css" rel="stylesheet"/>
+    <link href="../css/calendar.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="nav-header">
+    <a href="../index.html" class="btn-back">
+        <i class="icon-back"></i>
+    </a>
+    <div class="all-title-contact">存款-本地银行转账</div>
+    <a href="javascript:void(0);" class="ui-btn-more">
+        <i class="iocn-more"></i>
+    </a>
+</div>
+<div class="content">
+<!--项目主体-->
+<div class="ui-prom-body">
+<div class="ui-all-title">支付信息</div>
+<section>
+    <div class="ui-content-item">
+        <div  class="ui-form-content">
+            <div class="ui-label">
+                <label><span class="ui-porimter">*</span>支付机构：</label>
+                <select id="thirdOrg" name="thirdOrg">
+                    <option selected="" value="">请选择</option>
+                    <option value="100" rules="">支付宝</option>
+                </select>
+            </div>
+            <div class="ui-label">
+                <label><span class="ui-porimter">*</span>存款金额：</label>
+                <input type="text" name="bank_money" id="bank_money" class="bank_money" placeholder="请输入存款金额">
+                <div class="ui-tip-error ui-text-ft">✖请输入用户名</div>
+            </div>
+            <div class="ui-label">
+                <label>您的支付宝户名：</label>
+                <input type="text" name="alipay_user" id="alipay_user" class="alipay_user" placeholder="请输入您的支付宝户名：">
+                <!--<div class="ui-tip-error ui-text-ft">✖请输入用户名</div>-->
+            </div>
+            <div class="ui-label">
+                <label>支付宝账号：</label>
+                <input type="text" name="alipay_number" id="alipay_number" class="alipay_number" placeholder="请输入支付宝账号：">
+            </div>
+            <div class="ui-label">
+                <label><span class="ui-porimter">*</span>订单号：</label>
+                <input type="text" name="alipay_oder" id="alipay_oder" class="alipay_oder" placeholder="请输入订单号：">
+            </div>
+        </div>
+    </div>
+</section>
+<div class="ui-all-title">存到浩博支付宝信息</div>
+<section>
+    <div class="ui-content-item">
+        <div  class="ui-form-content">
+            <div class="ui-label">
+                <label><span class="ui-porimter">*</span>支付宝账号：</label>
+                <input type="text" name="bankNamne" id="bankNamne" class="bankNamne" placeholder="XXX">
+            </div>
+            <div class="ui-label">
+                <label><span class="ui-porimter">*</span>开户名：</label>
+                <input type="text" name="accountName" id="accountName" class="accountName" placeholder="请输入开户名">
+            </div>
+            <div class="ui-label">
+                <label><span class="ui-porimter">*</span>存入时间：</label>
+                <input type="text" name="depositTime" id="depositTime" class="depositTime" placeholder="请输入存入时间，如2016-01-01，1:00">
+            </div>
+            <div class="ui-label">
+                <label><span class="ui-porimter">*</span>备注：</label>
+                <textarea></textarea>
+            </div>
+            <div class="ui-btn-blue ui-margint10">
+                <input type="button" name="button"  class="button" value="提交支付">
+            </div>
+        </div>
+
+    </div>
+</section>
+</div>
+<!--项目主体end-->
+</div>
+
+<!--<div id="top-animation">顶部</div>-->
+<!--公用js-->
+<script type="text/javascript" src="../js/lib/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../js/comm.js"></script>
+<script src="../js/lib/calendar.js"></script>
+</body>
+</html>

@@ -1,48 +1,64 @@
 /**
  * Created by Administrator on 2016/3/10.
+
  */
+/*   (function() {
+ // windowWidth / 640 * 100 + 'px';
+ document.addEventListener('DOMContentLoaded', function() {
+ var html = document.documentElement;
+ var windowWidth = html.clientWidth;
+ // if (windowWidth >= 540) {
+ //     windowWidth = 540;
+ // }
+ if(windowWidth>736){
+ html.style.fontSize = 100 + 'px';
+ }else if(windowWidth<736){
+ html.style.fontSize = windowWidth / 6.4 + 'px';
+ }
+ }, false);
+ })();*/
 /*tab*/
 ;(function () {
-    // 等价于html.style.fontSize = windowWidth / 640 * 100 + 'px';
-    document.addEventListener('DOMContentLoaded', function () {
-        var html = document.documentElement;
-        var windowWidth = html.clientWidth;
-        html.style.fontSize = windowWidth / 6.4 + 'px';
-        if(windowWidth>1000){
-            html.style.fontSize = 100 + 'px';
-        }
-    }, false);
     if ($(".footer-bottom").length > 0) {
         $(".footer-bottom").prev("div").css({
-            "padding-bottom": "1.13rem"
+            "padding-bottom": "67px"
         });
     }
 })();
 
-/*返回顶部*/
-window.onload = function(){
-    var oTop = document.getElementById("top-animation");
-    function topDb(){
-        var scrTop = document.documentElement.scrollTop || document.body.scrollTop;
-      if(oTop){
-          if(scrTop<=15){
-              oTop.style.display ="none";
-          }else{
-              oTop.style.display ="block";
-          }
-      }
-    };
-    topDb();
-    window.onscroll = function(){
-        topDb();
-    };
-      if(oTop){
-          oTop.onclick = function(){
-              document.documentElement.scrollTop = document.body.scrollTop =0;
-          };
-      }
-};
+
 $(function(){
+    /*返回顶部*/
+    $("#top-animation").css("display","none");
+    var $isTop=$("#top-animation");
+    $(window).scroll(function(){
+        //top
+        if($isTop){
+            var sc=$(window).scrollTop();
+
+            /*头部固定*/
+            var headHeiht=$(".nav-header").height()+50;
+            console.log(headHeiht);
+            if(sc>headHeiht){
+                $(".nav-header").addClass("topFixed");
+            }else{
+                $(".nav-header").removeClass("topFixed");
+            }
+            if(sc>0){
+                $isTop.css("display","block");
+            }else{
+                $isTop.css("display","none");
+            }
+        }
+    });
+    if($isTop){
+        $isTop.click(function(){
+            $('body,html').animate({scrollTop:0},500);
+        });
+    }
+
+
+
     /*导航弹出*/
     $(".ui-btn-layer").click(function () {
         var navHeight=$(".nav-header").height()+'px';
@@ -69,14 +85,51 @@ $(function(){
         $(this).toggleClass("active");
     });
     $(".ui-nav-bar a").click(function () {
+        //$(this).toggleClass("active").siblings().removeClass("active");
         $(this).addClass("active").siblings().removeClass("active");
     });
-    /*tabs切换*/
-    $(".ui-nav-bar a").click(function () {
-        var index=$(this).index();
-        $(".ui-tabs-content .tabs-item").eq(index).show().siblings().hide();
-    });
-/*    function clickstop(e){
-        e.stopPropagation();
-    };*/
+
+    /*    function clickstop(e){
+     e.stopPropagation();
+     };*/
 });
+;(function ($) {
+    $.extend({
+        loading: function (options) {
+            options = $.extend({
+                loadId:'loader',
+                loadBg:"#6A7273",
+                loadSh:true,
+                time:3000
+            }, options);
+            var loadBox = '<div class="loader" id="loader">\
+                        <div class="loader-inner line-spin-fade-loader">\
+                        <div></div>\
+                        <div></div>\
+                        <div></div>\
+                        <div></div>\
+                        <div></div>\
+                        <div></div>\
+                        <div></div>\
+                        <div></div>\
+                        </div>\
+                        </div>';
+
+
+            function remove(){
+                $('#'+options.loadId).remove();
+            }
+            if ($('#'+options.loadId).length ==0) {
+                if(options.loadSh=='show'){
+                    $("body").append(loadBox);
+                }
+            }else if(options.loadSh=='hide'){
+                remove();
+            }
+
+            if (options.loadBg!=undefined) {
+                $('#'+options.loadId).css('background',options.loadBg);
+            }
+        }
+    });
+})(jQuery);

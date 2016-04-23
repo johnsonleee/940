@@ -7,12 +7,12 @@
 }
 .calendar {
     display: none;
-	position: fixed;
-	left: 0;
-	top: 100%;
-	width: 100%;
-	height: 100%;
-	font-family: arial, 'Hiragino Sans GB', 'Microsoft Yahei', 'SimSun', \5b8b\4f53, Tahoma, Arial, Helvetica, STHeiti;
+    position: fixed;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    height: 100%;
+    font-family: arial, 'Hiragino Sans GB', 'Microsoft Yahei', 'SimSun', \5b8b\4f53, Tahoma, Arial, Helvetica, STHeiti;
     -webkit-transition: .3s;
     font-size: 12px;
     transition: .3s;
@@ -20,26 +20,26 @@
 }
 .calendar.active {
     display: block;
-	top: 0;
+    top: 0;
     z-index: 100;
 }
 .calendar .calendar-mask,
 .calendar-content {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 .calendar .calendar-mask {
-	left: 0;
-	height: 100%;
-	background-color: #000;
-	opacity: .8;
+    left: 0;
+    height: 100%;
+    background-color: #000;
+    opacity: .8;
     -webkit-transition: opacity .5s
-    -moz-transition: opacity .5s
-    -ms-transition: opacity .5s
-    -o-transition: opacity .5s
-	transition: opacity .5s
+-moz-transition: opacity .5s
+-ms-transition: opacity .5s
+-o-transition: opacity .5s
+transition: opacity .5s
 }
 .calendar.close {
     opacity: 0;
@@ -111,7 +111,7 @@
     height: 210px;
     z-index: 5;
     -webkit-transform: translateX(-33.3333%);
-     transform: translateX(-33.3333%);
+    transform: translateX(-33.3333%);
 }
 .calendar .calendar-list > div {
     width: 33.3333%;
@@ -230,7 +230,7 @@
 .calendar .calendar-months,
 .calendar .calendar-years,
 .calendar .calendar-time {
-	display: none;
+    display: none;
     position: absolute;
     bottom: 0;
     width: 100%;

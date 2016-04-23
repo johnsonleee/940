@@ -1,79 +1,29 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-<meta name="apple-touch-fullscreen" content="yes" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-<meta name="format-detection" content="telephone=no" />
-<title>移动端页面侧边导航滑入效果 - HoverTree</title><base target="_blank" />
-<script src="http://hovertree.com/ziyuan/jquery/jquery-2.1.4.min.js"></script>
-<link rel="stylesheet" href="http://hovertree.com/texiao/mobile/2/hvtmoblilecss2.css">
-
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
 </head>
-<body>
+<body style="margin: 0">
 
-<div class="wrapperhovertree">
-<div class="container">
-<header>
-<h1><a href="javascript:;" class="slide-menu" target="_self"><img src="http://hovertree.com/texiao/mobile/2/menu.png" alt=""></a>HoverTree Menu</h1>
-</header>
-<div class="imgbox">
-<div>请点击图标，菜单将从左侧滑出。<a href="http://hovertree.com">首页</a> <a href="http://hovertree.com/hvtart/bjae/i1qo2kg6.htm">原文</a> <a href="http://hovertree.com/texiao/">特效库</a></div>
-<img src="http://hovertree.com/texiao/mobile/2/img1.jpg" alt="">
-<img src="http://hovertree.com/texiao/mobile/2/img2.jpg" alt="">
-<img src="http://hovertree.com/texiao/mobile/2/img3.jpg" alt="">
-<img src="http://hovertree.com/texiao/mobile/2/img4.jpg" alt="">
-<img src="http://hovertree.com/texiao/mobile/2/img5.jpg" alt="">
-<img src="http://hovertree.com/texiao/mobile/2/img6.jpg" alt="">
-<img src="http://hovertree.com/texiao/mobile/2/img7.jpg" alt="">
-<img src="http://hovertree.com/texiao/mobile/2/img8.jpg" alt="">
-<img src="http://hovertree.com/texiao/mobile/2/img9.jpg" alt="">
-</div>
-</div>
-</div>
 
-<!-- 侧边导航 -->
-<div class="slide-mask"></div>
-<aside class="slide-wrapper">
-<div>
-<div>
-<strong>HoverTree</strong>
-</div>
-<ul>
-<li><a href="http://hovertree.com/menu/jquery/">jQuery</a></li>
-<li><a href="http://hovertree.com/menu/javascript/">JavaScript</a></li>
-<li><a href="http://hovertree.com/menu/html5">HTML5</a></li>
-<li><a href="http://hovertree.com/menu/css">CSS</a></li>
-<li><a href="http://hovertree.com/menu/mobile/">移动Web</a></li>
-<li><a href="http://hovertree.com/menu/texiao/">网页特效</a></li>
-<li><a href="http://tool.keleyi.com/">工具</a></li>
-<li><a href="http://keleyi.com/">柯乐义</a></li>
-<li><a href="http://hovertree.com/guestbook/">留言</a></li>
-</ul>
-</div>
-</aside>
-<footer>
-hovertree.com 2014-2015
-</footer>
-<script>
-$(function(){
-$('aside.slide-wrapper').on('touchstart', 'li', function(e){
-$(this).addClass('current').siblings('li').removeClass('current');
-});
+<div id="id_video_container" style="width:100%;height:1080px;"></div><script src="http://qzonestyle.gtimg.cn/open/qcloud/video/h5/h5connect.js"></script>
+ <script type="text/javascript">
+            (function(){
+               var option ={"auto_play":"0","file_id":"14651978969257574452","app_id":"1251672867","width":1920,"height":1080};
+               /*调用播放器进行播放*/
+               new qcVideo.Player(
+                       /*代码中的id_video_container将会作为播放器放置的容器使用,可自行替换*/
+                       "id_video_container",
+                       option
+                   );
+             })()
+ </script>
 
-$('a.slide-menu').on('click', function(e){
-var wh = $('div.wrapperhove'+'rtree').height();
-$('div.slide-mask').css('height', wh).show();
-$('aside.slide-wrapper').css('height', wh).addClass('moved');
-});
 
-$('div.slide-mask').on('click', function(){
-$('div.slide-mask').hide();
-$('aside.slide-wrapper').removeClass('moved');
-});
-});
-</script>
 </body>
 </html>

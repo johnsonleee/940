@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title></title>
+    <link href="../css/index.css" rel="stylesheet"/>
+    <link href="../css/calendar.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="nav-header">
+    <a href="../index.html" class="btn-back">
+        <i class="icon-back"></i>
+    </a>
+    <div class="all-title-contact">存款-本地银行转账</div>
+    <a href="javascript:void(0);" class="ui-btn-more">
+        <i class="iocn-more"></i>
+    </a>
+</div>
+<div class="content">
+<!--项目主体-->
+<div class="ui-prom-body">
+<div class="ui-all-title"><span class="ui-porimter">*</span>提款方式</div>
+<div class="ui-nav-bar">
+    <a href="#" class="active">银行机构</a>
+    <a href="#">互联网机构</a>
+</div>
+    <div class="ui-tabs-content">
+        <div class="tabs-item">
+            <div class="ui-content-item">
+                <div  class="ui-form-content">
+                    <div class="ui-label">
+                        <label><span class="ui-porimter">*</span>银行名称：</label>
+                        <select id="bankName" name="bankName" class="">
+                            <option selected="" value="">请选择</option>
+                            <option value="1" rules="CNY">中国农业银行</option>
+                            <option value="2" rules="CNY">中国工商银行</option>
+                            <option value="3" rules="CNY">中国建设银行</option>
+                            <option value="4" rules="CNY">招商银行</option>
+                            <option value="6" rules="CNY">包商银行</option>
+                            <option value="7" rules="CNY">北京农商银行</option>
+                            <option value="8" rules="CNY">北京银行</option>
+                            <option value="9" rules="CNY">渤海银行</option>
+                            <option value="10" rules="CNY">赣州银行</option>
+                            <option value="11" rules="CNY">广东发展银行</option>
+                            <option value="12" rules="CNY">广东南粤银行</option>
+                            <option value="13" rules="CNY">广州银行</option>
+                            <option value="14" rules="CNY">汉口银行</option>
+                            <option value="15" rules="CNY">杭州银行</option>
+                            <option value="16" rules="CNY">河北银行</option>
+                            <option value="17" rules="CNY">恒丰银行</option>
+                            <option value="18" rules="CNY">华夏银行</option>
+                            <option value="19" rules="CNY">江苏江阴农村商业银行</option>
+                            <option value="20" rules="CNY">江苏银行</option>
+                            <option value="21" rules="CNY">交通银行</option>
+                            <option value="22" rules="CNY">南昌银行</option>
+                            <option value="23" rules="CNY">南京银行</option>
+                            <option value="24" rules="CNY">宁波银行</option>
+                            <option value="25" rules="CNY">平安银行</option>
+                            <option value="26" rules="CNY">上海农商银行</option>
+                            <option value="27" rules="CNY">上海浦东发展银行</option>
+                            <option value="28" rules="CNY">上海银行</option>
+                            <option value="29" rules="CNY">天津银行</option>
+                            <option value="30" rules="CNY">威海市商业银行</option>
+                            <option value="31" rules="CNY">微商银行</option>
+                            <option value="32" rules="CNY">温州银行</option>
+                            <option value="33" rules="CNY">乌鲁木齐市商业银行</option>
+                            <option value="34" rules="CNY">兴业银行</option>
+                            <option value="35" rules="CNY">中国民生银行</option>
+                            <option value="36" rules="CNY">中国银行</option>
+                            <option value="37" rules="CNY">中国邮政储蓄银行</option>
+                            <option value="38" rules="CNY">中信银行</option>
+                            <option value="39" rules="CNY">重庆银行</option>
+                        </select>
+                    </div>
+                    <div class="ui-label">
+                        <label><span class="ui-porimter">*</span>银行卡号：</label>
+                        <input type="text" name="user_country" id="user_country" class="user_country" placeholder="请输入银行卡号">
+                    </div>
+                    <div class="ui-label">
+                        <label><span class="ui-porimter">*</span>开户网点：</label>
+                        <select id="slectprovince" name="slectprovince" aria-required="true" aria-invalid="false" class="valid ui-col50 ui-disinline">
+                            <option selected="" value="">请选择</option>
+                            <option value="345">北京市</option>
+                            <option value="346">天津市</option>
+                            <option value="347">河北省</option>
+                            <option value="348">山西省</option>
+                            <option value="349">内蒙古</option>
+                            <option value="350">辽宁省</option>
+                            <option value="351">吉林省</option>
+                            <option value="352">黑龙江省</option>
+                            <option value="353">上海市</option>
+                            <option value="354">江苏省</option>
+                            <option value="355">浙江省</option>
+                            <option value="356">安徽省</option>
+                            <option value="357">福建省</option>
+                            <option value="358">江西省</option>
+                            <option value="359">山东省</option>
+                            <option value="360">河南省</option>
+                            <option value="361">湖北省</option>
+                            <option value="362">湖南省</option>
+                            <option value="363">广东省</option>
+                            <option value="364">广西壮族自治区</option>
+                            <option value="365">海南省</option>
+                            <option value="366">重庆市</option>
+                            <option value="367">四川省</option>
+                            <option value="368">贵州省</option>
+                            <option value="369">云南省</option>
+                            <option value="370">陕西省</option>
+                            <option value="371">甘肃省</option>
+                            <option value="372">青海省</option>
+                            <option value="373">宁夏回族自治区</option>
+                            <option value="374">新疆维吾尔自治区</option>
+                            <option value="630">西藏自治区</option>
+                        </select>
+                        <select id="slertcity" name="slertcity" class="ui-col50 ui-disinline">
+                            <option value="">请选择城市</option>
+                            <option value="492">济南市</option>
+                            <option value="493">青岛市</option>
+                            <option value="494">淄博市</option>
+                            <option value="495">枣庄市</option>
+                            <option value="496">东营市</option>
+                            <option value="497">烟台市</option>
+                            <option value="499">济宁市</option>
+                            <option value="500">泰安市</option>
+                            <option value="501">莱芜市</option>
+                            <option value="502">临沂市</option>
+                            <option value="503">德州市</option>
+                            <option value="504">聊城市</option>
+                            <option value="505">荷泽市</option>
+                        </select>
+                    </div>
+                    <div class="ui-label">
+                        <label><span class="ui-porimter">*</span>分行网点：</label>
+                        <input type="text" name="user_last" id="user_last" class="user_last" placeholder="请输入分行网点">
+                    </div>
+                    <div class="ui-label">
+                        <label><span class="ui-porimter">*</span>存入姓名：</label>
+                        <input type="text" name="user_first" id="user_first" class="user_first" placeholder="请输入真实的姓名">
+                        <div class="ui-tip-error ui-text-ft">✖请输入用户名</div>
+                    </div>
+                    <div class="ui-btn-blue">
+                        <input type="button" name="button" id="button" class="button" value="确定">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tabs-item" style="display: none;">
+            <div class="ui-content-item">
+                <div  class="ui-form-content">
+                    <div class="ui-label">
+                        <label><span class="ui-porimter">*</span>机构名称：</label>
+                        <select id="orgName" name="orgName" aria-required="true" aria-invalid="false" class="valid">
+                            <option selected="" value="">请选择</option>
+                            <option value="52" rules="CNY">支付宝</option>
+                        </select>
+                    </div>
+                    <div class="ui-label">
+                        <label><span class="ui-porimter">*</span>机构账号：</label>
+                        <input type="text" name="agencyname" id="agencyname" class="agencyname" placeholder="请输入机构账号">
+                    </div>
+                    <div class="ui-label">
+                        <label><span class="ui-porimter">*</span>开户名：</label>
+                        <input type="text" name="accountname" id="accountname" class="accountname" placeholder="请输入开户名">
+                        <div class="ui-tip-error ui-text-ft">*支付宝账号的姓名必须与您在浩博的姓名一致
+                        </div>
+                    </div>
+                    <div class="ui-btn-blue">
+                        <input type="button" name="button" class="button" value="确定">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--项目主体end-->
+</div>
+
+<!--<div id="top-animation">顶部</div>-->
+<!--公用js-->
+<script type="text/javascript" src="../js/lib/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../js/comm.js"></script>
+</body>
+</html>

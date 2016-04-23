@@ -27,39 +27,50 @@ $(function() {
 
     // 数字
     var CountUpOptions = {
-          useEasing : false,
-          useGrouping : true,
-          separator : ',',
-          prefixdecimal : '.',
-          prefix : '',
-          suffix : ''
-        };
-        $("html, body").scrollTop(0);
-        var demo = new CountUp("myTargetElement", 0,758360, 0, 2.5,CountUpOptions);
+        useEasing: false,
+        useGrouping: true,
+        separator: ',',
+        prefixdecimal: '.',
+        prefix: '',
+        suffix: ''
+    };
+    $("html, body").scrollTop(0);
+    var demo = new CountUp("myTargetElement", 0, 758360, 0, 2.5, CountUpOptions);
 
-        var rollSet = $('#myTargetElement');
-        var inPark = $("#inPark").offset();
-        var offset = rollSet.offset();
-        $(window).scroll(function() {
-            var scrollTop = $(window).scrollTop();
-            var scrollWindow = $(window).height();
-            var rollLen = rollSet.find(".sectiondemo");
+    var rollSet = $('#myTargetElement');
+    var offset = rollSet.offset();
+    $(window).scroll(function() {
+        var scrollTop = $(window).scrollTop();
+        var scrollWindow = $(window).height();
+        var rollLen = rollSet.find(".sectiondemo");
 
-            if(offset.top + 2300 < scrollTop){
-                demo.start();
-            }
-        });
-        /*下载显示隐藏*/
-        var platformht=$(".platform").outerHeight(true);
+        if (offset.top + 2000 < scrollTop) {
+            demo.start();
+        }
+    });
+
+    // 下载猎流
+    var platformht = $(".platform").outerHeight(true);
     $(".download").hide();
-    $(document).scroll(function () {
+    $(document).scroll(function(){
         var scrTop = $(document).scrollTop();
         console.log(platformht);
-        if(scrTop>=platformht){
+        if (scrTop >= platformht) {
             $(".download").fadeIn();
         }else{
             $(".download").fadeOut();
         }
+    });
+
+    // 右侧栏
+    $('.slide-menu').on('click', function() {
+        var test = $('.wrapperhove' + 'rtree').height();
+        $('.slide-mask').css('height', test).show();
+        $('.slide-wrapper').css('height', test).addClass('moved');
+    });
+    $('.slide-mask').on('click', function() {
+        $('.slide-mask').hide();
+        $('.slide-wrapper').removeClass('moved');
     });
 
 
@@ -75,3 +86,8 @@ $(function() {
 //     return c;
 // }
 // isPhone() || (window.location.href = "http://m.940.com/");
+
+
+
+
+
