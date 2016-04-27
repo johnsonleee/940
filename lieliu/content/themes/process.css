@@ -121,43 +121,122 @@ header {
     float: left;
 }
 
-.task .task-bg1{
+.task .task-bg{
     width: 100%;
     height: 1.27rem;
     float: left;
-
-    background-color: paleturquoise;
 }
 
-.task .task-bg1 dl{
-    width: calc(100% - 0.92rem);
-    width: -webkit-calc(100% - 0.92rem);
+.task .task-clr1{
+    background-color: #fff9dd;
+}
+
+.task .task-clr2{
+    background-color: #ebf8ff;
+}
+
+.task .task-clr3{
+    background-color: #ddfac9;
+}
+
+.task .task-bg dl{
+    width: calc(100% - 0.88rem);
+    width: -webkit-calc(100% - 0.88rem);
     height: 0.81rem;
-    margin: 0.24rem 0.46rem 0.22rem;
-
-    background-color: palegoldenrod;
+    margin: 0.24rem 0.3rem 0.22rem 0.58rem;
 }
 
-.task .task-bg1 dl dt{
+.task .task-bg dl dt{
     width: 0.81rem;
     height: 0.81rem;
     margin-right: 0.2rem;
     float: left;
-
-    background-color: pink;
 }
 
-.task .task-bg1 dl dd{
+.task .task-bg dl .task-one{
+    background: url('../images/process/task-one.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task .task-bg dl .task-two{
+    background: url('../images/process/task-two.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task .task-bg dl .task-three{
+    background: url('../images/process/task-three.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task .task-bg dl .task-four{
+    background: url('../images/process/task-four.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task .task-bg dl .task-five{
+    background: url('../images/process/task-five.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task .task-bg dl dd{
     width: calc(100% - 1.01rem);
     width: -webkit-calc(100% - 1.01rem);
     float: left;
-
-    background-color: palegreen;
 }
 
-.task .task-bg1 dl .task-title{
+.task .task-bg dl .task-title{
     height: 0.37rem;
     margin: 0.06rem 0 0.12rem;
+}
+
+.task .task-bg dl .task-text{
+    font-size: 0.2rem;
+}
+
+.task-title i{
+    width: 1.34rem;
+    height: 0.37rem;
+    float: left;
+}
+
+.task-title .task-topic1{
+    margin-right: 0.16rem;
+    background: url('../images/process/task-topic1.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task-title .task-topic2{
+    margin-right: 0.16rem;
+    background: url('../images/process/task-topic2.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task-title .task-topic3{
+    margin-right: 0.16rem;
+    background: url('../images/process/task-topic3.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task-title .task-topic4{
+    margin-right: 0.16rem;
+    background: url('../images/process/task-topic4.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task-title .task-topic5{
+    margin-right: 0.16rem;
+    background: url('../images/process/task-topic5.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task-title .task-icon1{
+    background: url('../images/process/task-icon1.png') no-repeat left center;
+    background-size: 1.04rem 0.37rem;
+}
+
+.task-title .task-icon2{
+    background: url('../images/process/task-icon2.png') no-repeat left center;
+    background-size: 1.04rem 0.37rem;
 }
 
 .task .task-bg1 dl .task-text{
@@ -167,9 +246,153 @@ header {
     color: #2f2f2f;
 }
 
+.task .task-cont{
+    width: 100%;
+    float: left;
+    background-color: #fff;
+}
 
+.task .task-cont dl{
+    width: calc(100% - 0.32rem);
+    width: -webkit-calc(100% - 0.32rem);
+    margin: 0 0.16rem;
+    padding-top: 0.68rem;
+    float: left;
+}
 
+.task .task-cont dl dt{
+    width: 2.49rem;
+    height: 2.58rem;
+    margin: 0 0 0.66rem;
+    float: left;
+}
 
+.task .task-cont dl .task-ui1{
+    background: url('../images/process/task-ui1.png') no-repeat center center;
+    background-size: 2.49rem 2.49rem;
+}
+
+.task .task-cont dl .task-ui2{
+    background: url('../images/process/task-ui2.png') no-repeat center center;
+    background-size: 2.49rem 2.58rem;
+}
+
+.task .task-cont dl .task-ui3{
+    background: url('../images/process/task-ui3.png') no-repeat center center;
+    background-size: 2.49rem 2.55rem;
+}
+
+.task .task-cont dl .task-ui4{
+    background: url('../images/process/task-ui4.png') no-repeat center center;
+    background-size: 2.49rem 2.49rem;
+}
+
+.task .task-cont dl .task-ui5{
+    background: url('../images/process/task-ui5.png') no-repeat center center;
+    background-size: 2.49rem 2.49rem;
+}
+
+.task .task-cont dl dd{
+    width: calc(100% - 2.71rem);
+    width: -webkit-calc(100% - 2.73rem);
+    line-height: 0.18rem;
+    font-size: 0.17rem;
+    color: #000000;
+    margin: 0.28rem 0 0 0.24rem;
+    float: left;
+}
+
+.task .task-cont dl .task-spac{
+    margin-bottom: 0.68rem;
+}
+
+.task .task-cont dl i{
+    width: 0.18rem;
+    height: 0.18rem;
+    margin-right: 0.08rem;
+    float: left;
+}
+
+.task .task-cont dl .tick1{
+    background: url('../images/process/tick1.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task .task-cont dl .tick2{
+    background: url('../images/process/tick2.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task .task-cont dl .tick3{
+    background: url('../images/process/tick3.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task .task-cont dl .number1{
+    background: url('../images/process/number1.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task .task-cont dl .number2{
+    background: url('../images/process/number2.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task .task-cont dl .number3{
+    background: url('../images/process/number3.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task .task-cont dl .number4{
+    background: url('../images/process/number4.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task .task-cont dl span{
+    float: left;
+}
+
+.task .task-cont dl .distance1{
+    width: 1.19rem;
+    margin-right: 0.24rem;
+}
+
+.task .task-cont dl .distance2{
+    width: 3.06rem;
+    line-height: 0.22rem;
+    margin-top: -2px;
+}
+
+.task .task-cont dl .task-button{
+    width: 2.75rem;
+    height: 0.67rem;
+    margin-top: 0.5rem;
+}
+
+.task .task-cont dl .task-button a{
+    width: 2.75rem;
+    height: 0.67rem;
+    line-height: 0.68rem;
+    font-size: 0.3rem;
+    color: #000000;
+    text-indent: 24px;
+    display: block;
+}
+
+.task-button .task-btn1{
+    background: url('../images/process/task-btn1.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task-button .task-btn2{
+    background: url('../images/process/task-btn2.png') no-repeat center center;
+    background-size: 100%;
+}
+
+.task-button .task-btn3{
+    background: url('../images/process/task-btn3.png') no-repeat center center;
+    background-size: 100%;
+}
 
 /**
  * shop

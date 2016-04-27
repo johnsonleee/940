@@ -116,16 +116,16 @@ header {
     float: left;
 }
 
-.video-cont a{
-    
-}
-
 .video-cont dl{
     width: calc((100% - 0.12rem) / 2);
     width: -webkit-calc((100% - 0.12rem) / 2);
     height: 2.16rem;
     box-shadow: 0 1px 5px #ccc;
     margin-bottom: 0.28rem;
+    float: left;
+}
+
+.video-cont dl a{
     float: left;
 }
 
@@ -137,8 +137,6 @@ header {
     width: 100%;
     height: 1.4rem;
     float: left;
-
-    background-color: palegreen;
 }
 
 .video-cont dl dt img{
@@ -187,18 +185,6 @@ header {
     line-height: 0.24rem;
     font-size: 0.14rem;
     margin: 0 0.09rem;
-}
-
-.video .video-btn1{
-    margin: 0.44rem 0;
-    background: url('../images/index/video-btn1.png') no-repeat center center;
-    background-size: 4.5rem 0.46rem;
-    float: left;
-}
-
-.video .video-btn2 {
-    margin: 0 auto 0.94rem;
-    float: left;
 }
 
 /**
@@ -511,18 +497,6 @@ header {
     padding-left: 0.26rem;
     display: block;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 /**
  * 返回top顶部

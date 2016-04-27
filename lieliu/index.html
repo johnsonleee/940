@@ -18,10 +18,12 @@
     <!--js-->
     <script type="text/javascript" src="scripts/js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="scripts/js/CountUp.min.js"></script>
+    <script type="text/javascript" src="scripts/angular-1.4.5.js"></script>
+    <script type="text/javascript" src="scripts/anlIndex.js"></script>
     <script type="text/javascript" src="scripts/index.js"></script>
 </head>
 
-<body>
+<body ng-app="indexmodule">
 <!-- header -->
 <header>
     <div class="header-top">
@@ -43,7 +45,7 @@
                 <a href="process.html">推广流程</a>
                 <a href="product.html">产品功能</a>
                 <a href="flowSet.html">流量套餐</a>
-                <a href="videoDemo.html">视频演示</a>
+                <a href="videoDemo.html?videoId=14651978969257574452">视频演示</a>
             </div>
             <div class="slide-two">
                 <a href="downloads.html">下载</a>
@@ -73,7 +75,8 @@
         <div class="free-title1"></div>
         <div class="free-title2"></div>
         <div class="free-cont">
-            <dl>
+        <free-List></free-List>
+           <!-- <dl>
                 <dt class="free-icon1"></dt>
                 <dd class="free-clr free-topic1"></dd>
                 <dd class="free-text">完全自然人工浏览，不同地区IP，真实流量、安全可靠</dd>
@@ -92,7 +95,7 @@
                 <dt class="free-icon4"></dt>
                 <dd class="free-clr free-topic4"></dd>
                 <dd class="free-text">轻松为您打造店铺爆款商品，从而引爆全店销量</dd>
-            </dl>
+            </dl>-->
         </div>
     </div>
 </div>
@@ -125,72 +128,7 @@
     <div class="video-title2"></div>
     <div class="video-title3"></div>
     <div class="video-cont">
-        <dl class="video-spacing">
-            <dt><img class="video-icon1" src="content/images/index/video-icon1.jpg"></dt>
-            <dd class="video-topic">注册帐号，完善资料，绑定手机证书</dd>
-            <dd class="video-play">
-                <i class="play-icon1"></i>
-                <span>时长：05:30</span>
-                <span class="line">|</span>
-                <i class="play-icon2"></i>
-                <span>播放：1564</span>
-            </dd>
-        </dl>
-        <dl>
-            <dt><img class="video-icon2" src="content/images/index/video-icon2.jpg"></dt>
-            <dd class="video-topic">如何发布推广任务(PC端)</dd>
-            <dd class="video-play">
-                <i class="play-icon1"></i>
-                <span>时长：05:30</span>
-                <span class="line">|</span>
-                <i class="play-icon2"></i>
-                <span>播放：1564</span>
-            </dd>
-        </dl>
-        <dl class="video-spacing">
-            <dt><img class="video-icon3" src="content/images/index/video-icon3.jpg"></dt>
-            <dd class="video-topic">如何发布推广任务(手机端)</dd>
-            <dd class="video-play">
-                <i class="play-icon1"></i>
-                <span>时长：05:30</span>
-                <span class="line">|</span>
-                <i class="play-icon2"></i>
-                <span>播放：1564</span>
-            </dd>
-        </dl>
-        <dl>
-            <dt><img class="video-icon4" src="content/images/index/video-icon4.jpg"></dt>
-            <dd class="video-topic">如何发布商品链接任务</dd>
-            <dd class="video-play">
-                <i class="play-icon1"></i>
-                <span>时长：05:30</span>
-                <span class="line">|</span>
-                <i class="play-icon2"></i>
-                <span>播放：1564</span>
-            </dd>
-        </dl>
-        <dl class="video-spacing">
-            <dt><img class="video-icon5" src="content/images/index/video-icon5.jpg"></dt>
-            <dd class="video-topic">如何发布店铺链接任务</dd>
-            <dd class="video-play">
-                <i class="play-icon1"></i>
-                <span>时长：05:30</span>
-                <span class="line">|</span>
-                <i class="play-icon2"></i>
-                <span>播放：1564</span>
-            </dd>
-        </dl>
-        <dl>
-            <dt><img class="video-icon6" src="content/images/index/video-icon6.jpg"></dt>
-            <dd class="video-topic">如何查关键词排名</dd>
-            <dd class="video-play">
-                <i class="play-icon1"></i>
-                <span>时长：05:30</span>
-                <span class="line">|</span>
-                <i class="play-icon2"></i>
-                <span>播放：1564</span>
-            </dd>
-        </dl>
+        <video-List></video-List>
     </div>
     <div class="video-btn1"></div>
     <div class="video-btn2">
@@ -218,7 +156,9 @@
         <span>猎流是一款网络营销、网店推广系统，用于提高网店流量，店铺权重，商品排名，店铺宝贝收藏数，IP(独立IP)等的免费网络推广软件。</span>
     </div>
     <div class="about-scan">
-        <img class="video-icon6" src="content/images/index/about-scan.jpg">
+        <div class="about-ctr">
+            <img class="video-icon6" src="content/images/index/about-scan.jpg">
+        </div>
     </div>
     <div class="about-title4"></div>
 </div>
@@ -231,7 +171,7 @@
     </div>
     <div class="shop-title2"></div>
     <div class="shop-btn">
-        <a href="http://www.lieliu.com/app/index.html"> <i></i></a>
+        <a href="javascript:" target="_blank"><i></i></a>
     </div>
 </div>
 
@@ -271,7 +211,7 @@
 </div>
 
 <!-- 下载猎流 -->
-<a href="http://www.lieliu.com/app/index.html" class="download">
+<a href="javascript:" target="_blank" class="download">
     <img alt="下载猎流" src="content/images/index/download.png">
 </a>
 <!-- 返回top顶部 -->

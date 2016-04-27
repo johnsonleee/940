@@ -20,54 +20,6 @@
     <script type="text/javascript" src="scripts/js/h5connect.js"></script>
     <script type="text/javascript" src="scripts/js/CountUp.min.js"></script>
     <script type="text/javascript" src="scripts/videoDemo.js"></script>
-    <script type="text/javascript">
-        function getQueryString(name) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-            var r = window.location.search.substr(1).match(reg);
-            if (r != null) return unescape(r[2]);
-            return null;
-        }
-        var url = location.href;
-        var id = getQueryString("id");
-        $(function() {
-            $.ajax({
-                async: false,
-                type: "get",
-                // url: "/",
-                // dataType: 'jsonp',
-                // jsonp: 'callback',
-                processData: false,
-                contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                success: function(data) {
-                    if (data && data.count > 0) {
-                        for (var i = 0; i < data.list.length; i++) {
-                            var item = data.list[i];
-                            if (item.id == id) {
-                                // var option = {
-                                //     "auto_play": "0",
-                                //     "file_id": item.videoId,
-                                //     "app_id": "1251672867",
-                                //     "width": 640,
-                                //     "height": 360,
-                                //     'remember': '1',
-                                //     "VMode": 'opaque',
-                                //     "stretch_patch": true
-                                // };
-                                // new qcVideo.Player("id_video_container", option);
-                                // break;
-                            }
-                        }
-                    }
-                    //console.log(data.list.id);
-                    //var video = new tvp.VideoInfo();
-                    //video.setVid(data.list.id);
-
-                }
-            });
-
-
-        });
-    </script>
 </head>
 
 <body>
@@ -92,7 +44,7 @@
                 <a href="process.html">推广流程</a>
                 <a href="product.html">产品功能</a>
                 <a href="flowSet.html">流量套餐</a>
-                <a href="videoDemo.html">视频演示</a>
+                <a href="videoDemo.html?videoId=14651978969257574452">视频演示</a>
             </div>
             <div class="slide-two">
                 <a href="downloads.html">下载</a>
@@ -107,8 +59,8 @@
 <div class="video">
     <div id="id_video_container" style="width:100%; height:360px;"></div>
     <div class="video-cont">
-        <a href="javascript:">
-            <dl class="video-spacing">
+<!--         <dl class="video-spacing">
+            <a href="javascript:">
                 <dt><img class="video-icon1" src="content/images/index/video-icon1.jpg"></dt>
                 <dd class="video-topic">注册帐号，完善资料，绑定手机证书</dd>
                 <dd class="video-play">
@@ -118,10 +70,10 @@
                     <i class="play-icon2"></i>
                     <span>播放：1564</span>
                 </dd>
-            </dl>
-        </a>
-        <a href="javascript:">
-            <dl>
+            </a>
+        </dl>
+        <dl>
+            <a href="javascript:">
                 <dt><img class="video-icon2" src="content/images/index/video-icon2.jpg"></dt>
                 <dd class="video-topic">如何发布推广任务(PC端)</dd>
                 <dd class="video-play">
@@ -131,10 +83,10 @@
                     <i class="play-icon2"></i>
                     <span>播放：1564</span>
                 </dd>
-            </dl>
-        </a>
-        <a href="javascript:">
-            <dl class="video-spacing">
+            </a>
+        </dl>
+        <dl class="video-spacing">
+            <a href="javascript:">
                 <dt><img class="video-icon3" src="content/images/index/video-icon3.jpg"></dt>
                 <dd class="video-topic">如何发布推广任务(手机端)</dd>
                 <dd class="video-play">
@@ -144,10 +96,10 @@
                     <i class="play-icon2"></i>
                     <span>播放：1564</span>
                 </dd>
-            </dl>
-        </a>
-        <a href="javascript:">
-            <dl>
+            </a>
+        </dl>
+        <dl>
+            <a href="javascript:">
                 <dt><img class="video-icon4" src="content/images/index/video-icon4.jpg"></dt>
                 <dd class="video-topic">如何发布商品链接任务</dd>
                 <dd class="video-play">
@@ -157,10 +109,10 @@
                     <i class="play-icon2"></i>
                     <span>播放：1564</span>
                 </dd>
-            </dl>
-        </a>
-        <a href="javascript:">
-            <dl class="video-spacing">
+            </a>
+        </dl>
+        <dl class="video-spacing">
+            <a href="javascript:">
                 <dt><img class="video-icon5" src="content/images/index/video-icon5.jpg"></dt>
                 <dd class="video-topic">如何发布店铺链接任务</dd>
                 <dd class="video-play">
@@ -170,10 +122,10 @@
                     <i class="play-icon2"></i>
                     <span>播放：1564</span>
                 </dd>
-            </dl>
-        </a>
-        <a href="javascript:">
-            <dl>
+            </a>
+        </dl>
+        <dl>
+            <a href="javascript:">
                 <dt><img class="video-icon6" src="content/images/index/video-icon6.jpg"></dt>
                 <dd class="video-topic">如何查关键词排名</dd>
                 <dd class="video-play">
@@ -183,11 +135,11 @@
                     <i class="play-icon2"></i>
                     <span>播放：1564</span>
                 </dd>
-            </dl>
-        </a>
-        <a href="javascript:">
-            <dl class="video-spacing">
-                <dt><img class="video-icon7" src="content/images/process/video-icon7.jpg"></dt>
+            </a>
+        </dl>
+        <dl class="video-spacing">
+            <a href="javascript:">
+                <dt><img class="video-icon7" src="content/images/index/video-icon7.jpg"></dt>
                 <dd class="video-topic">如何充值猎流积分</dd>
                 <dd class="video-play">
                     <i class="play-icon1"></i>
@@ -196,11 +148,11 @@
                     <i class="play-icon2"></i>
                     <span>播放：1564</span>
                 </dd>
-            </dl>
-        </a>
-        <a href="javascript:">
-            <dl>
-                <dt><img class="video-icon8" src="content/images/process/video-icon8.jpg"></dt>
+            </a>
+        </dl>
+        <dl>
+            <a href="javascript:">
+                <dt><img class="video-icon8" src="content/images/index/video-icon8.jpg"></dt>
                 <dd class="video-topic">如何推广猎流系统获得佣金</dd>
                 <dd class="video-play">
                     <i class="play-icon1"></i>
@@ -209,11 +161,11 @@
                     <i class="play-icon2"></i>
                     <span>播放：1564</span>
                 </dd>
-            </dl>
-        </a>
-        <a href="javascript:">
-            <dl class="video-spacing">
-                <dt><img class="video-icon9" src="content/images/process/video-icon9.jpg"></dt>
+            </a>
+        </dl>
+        <dl class="video-spacing">
+            <a href="javascript:">
+                <dt><img class="video-icon9" src="content/images/index/video-icon9.jpg"></dt>
                 <dd class="video-topic">如何查看并管理店铺营销数据</dd>
                 <dd class="video-play">
                     <i class="play-icon1"></i>
@@ -222,11 +174,11 @@
                     <i class="play-icon2"></i>
                     <span>播放：1564</span>
                 </dd>
-            </dl>
-        </a>
-        <a href="javascript:">
-            <dl>
-                <dt><img class="video-icon10" src="content/images/process/video-icon10.jpg"></dt>
+            </a>
+        </dl> -->
+        <dl>
+            <a href="javascript:">
+                <dt><img class="video-icon10" src="content/images/index/video-icon10.jpg"></dt>
                 <dd class="video-topic">海量优质货源，智能管理店铺</dd>
                 <dd class="video-play">
                     <i class="play-icon1"></i>
@@ -235,11 +187,11 @@
                     <i class="play-icon2"></i>
                     <span>播放：1564</span>
                 </dd>
-            </dl>
-        </a>
-        <a href="javascript:">
-            <dl class="video-spacing">
-                <dt><img class="video-icon11" src="content/images/process/video-icon11.jpg"></dt>
+            </a>
+        </dl>
+        <dl class="video-spacing">
+            <a href="javascript:">
+                <dt><img class="video-icon11" src="content/images/index/video-icon11.jpg"></dt>
                 <dd class="video-topic">百变装修模板，一键美化店铺</dd>
                 <dd class="video-play">
                     <i class="play-icon1"></i>
@@ -248,11 +200,11 @@
                     <i class="play-icon2"></i>
                     <span>播放：1564</span>
                 </dd>
-            </dl>
-        </a>
-        <a href="javascript:">
-            <dl>
-                <dt><img class="video-icon12" src="content/images/process/video-icon12.jpg"></dt>
+            </a>
+        </dl>
+        <dl>
+            <a href="javascript:">
+                <dt><img class="video-icon12" src="content/images/index/video-icon12.jpg"></dt>
                 <dd class="video-topic">自动充值系统，快速提升店铺信誉</dd>
                 <dd class="video-play">
                     <i class="play-icon1"></i>
@@ -261,12 +213,8 @@
                     <i class="play-icon2"></i>
                     <span>播放：1564</span>
                 </dd>
-            </dl>
-        </a>
-    </div>
-    <div class="video-btn1"></div>
-    <div class="video-btn2">
-        <a href="http://www.lieliu.com/app/index.html"><i></i></a>
+            </a>
+        </dl>
     </div>
 </div>
 
@@ -278,7 +226,7 @@
     </div>
     <div class="shop-title2"></div>
     <div class="shop-btn">
-        <a href="http://www.lieliu.com/app/index.html"> <i></i></a>
+        <a href="javascript:"><i></i></a>
     </div>
 </div>
 
@@ -318,9 +266,9 @@
 </div>
 
 <!-- 下载猎流 -->
-<!-- <a href="http://www.lieliu.com/app/index.html" class="download">
+<a href="javascript:" class="download">
     <img alt="下载猎流" src="content/images/index/download.png">
-</a> -->
+</a>
 
 <!-- 返回top顶部 -->
 <!-- <a href="javascript:;">

@@ -604,7 +604,7 @@ header {
 
 .about .about-title3 {
     width: 100%;
-    margin: 0.52rem 0 0.82rem;
+    margin: 0.52rem 0 0;
 }
 
 .about .about-title3 span {
@@ -624,17 +624,35 @@ header {
     width: 100%;
 }
 
-.about .about-scan img {
+.about .about-scan .about-ctr {
     width: 3rem;
     height: 3rem;
     margin: 0 auto;
+    /*  */
+    background: url('../images/index/about-scan.jpg') no-repeat center 0.82rem;
+    background-size: contain;
+    position: relative;
+    padding: 0.82rem 0;
+}
+
+.about .about-scan .about-ctr img {
+    width: 3rem;
+    height: 3rem;
     display: block;
+    /*  */
+    position: absolute;
+    left: -1rem;
+    top: -0.6rem;
+    border: none;
+    opacity:0;
+
+    padding: 100px;
 }
 
 .about .about-title4 {
     width: 100%;
     height: 0.36rem;
-    margin: 0.3rem 0 1.06rem;
+    margin: -0.52rem 0 1.06rem;
     background: url('../images/index/about-title4.png') no-repeat center center;
     background-size: 3rem 0.36rem;
 }
