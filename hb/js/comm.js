@@ -18,13 +18,6 @@
  }, false);
  })();*/
 /*tab*/
-;(function () {
-    if ($(".footer-bottom").length > 0) {
-        $(".footer-bottom").prev("div").css({
-            "padding-bottom": "67px"
-        });
-    }
-})();
 
 
 $(function(){
@@ -32,18 +25,18 @@ $(function(){
     $("#top-animation").css("display","none");
     var $isTop=$("#top-animation");
     $(window).scroll(function(){
+        var sc=$(window).scrollTop();
+        /*头部固定*/
+        /*var headHeiht=$(".nav-header").height()+50;
+         *//*        console.log(headHeiht);*//*
+         if(sc>headHeiht){
+         $(".nav-header").addClass("topFixed");
+         }else{
+         $(".nav-header").removeClass("topFixed");
+         }*/
+
         //top
         if($isTop){
-            var sc=$(window).scrollTop();
-
-            /*头部固定*/
-            var headHeiht=$(".nav-header").height()+50;
-            console.log(headHeiht);
-            if(sc>headHeiht){
-                $(".nav-header").addClass("topFixed");
-            }else{
-                $(".nav-header").removeClass("topFixed");
-            }
             if(sc>0){
                 $isTop.css("display","block");
             }else{
@@ -87,11 +80,27 @@ $(function(){
     $(".ui-nav-bar a").click(function () {
         //$(this).toggleClass("active").siblings().removeClass("active");
         $(this).addClass("active").siblings().removeClass("active");
+        var index=$(this).index();
+        $(".ui-tabs-content .tabs-item").eq(index).show().siblings().hide();
     });
 
     /*    function clickstop(e){
      e.stopPropagation();
      };*/
+    /*选中银行卡*/
+    $(".chatroom-ul").click(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+    });
+
+    var mainId=$("#main");
+    $(".content").css({"padding-bottom":"67px","padding-top":$(".nav-header").height()});
+    if(mainId){
+        mainId.css({"padding-bottom":"67px","padding-top":$(".nav-header").height()});
+        $(".ui-alert-page").css({"padding-bottom":"67px","padding-top":$(".nav-header").height()});
+    }else{
+        alert(3)
+        $("body,.ui-alert-page").css({"padding-bottom":"67px","padding-top":$(".nav-header").height()});
+    }
 });
 ;(function ($) {
     $.extend({

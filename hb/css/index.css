@@ -45,6 +45,9 @@ i {
 .css {
     -webkit-touch-callout: none;
 }
+html, body{
+    min-height:100%;
+}
 html {
     /*font-size为 320 / 640 * 100 = 50(px);*/
     font-size: 100%;
@@ -101,6 +104,34 @@ a:hover {
 input {
     outline: none;
 }
+/*公用字体*/
+.ui-font-18{
+    font-size: 18px!important;
+}
+.ui-font-17{
+    font-size: 17px!important;
+}
+.ui-font-16{
+    font-size: 16px!important;
+}
+.ui-font-15{
+    font-size: 15px!important;
+}
+.ui-font-14{
+    font-size: 14px!important;
+}
+.ui-font-13{
+    font-size: 13px!important;
+}
+.ui-font-11{
+    font-size: 11px!important;
+}
+.ui-font-normal{
+    font-weight:normal!important;
+}
+.ui-split-line{
+    padding:0 2px;
+}
 /*公用颜色*/
 /*黑色*/
 .ui-color-black{
@@ -120,7 +151,7 @@ input {
 }
 /*蓝色*/
 .ui-color-blue {
-    color: #8DB2F5;
+    color: #8DB2F5!important;
 }
 /*绿色*/
 .ui-color-green {
@@ -129,6 +160,10 @@ input {
 /*黄色*/
 .ui-color-yellow {
     color: #ed9c28;
+}
+/*默认*/
+.ui-color-default {
+    color: #676464;
 }
 .ui-list-mian .ui-color-red {
     color: red;
@@ -368,6 +403,10 @@ input {
     overflow-x: auto;
     font-size:14px;
 }
+.ui-list-title{
+    display:block;
+    padding:10px 0;
+}
 .ui-all-title span {
     padding: 0 5px;
 }
@@ -375,7 +414,7 @@ input {
     /* height: 0.9rem; */
     position: relative;
     /* line-height: 0.3rem; */
-    padding-top: 15px;
+    padding-top: 10px;
     overflow: hidden;
 }
 .ui-kj-list {
@@ -389,17 +428,23 @@ input {
 .ui-content-item ul li {
     position: relative;
     border-bottom: 1px solid #E6DCC3;
-    padding: 0 15px 15px;
+    padding: 0 15px 10px;
 }
 .ui-content-item ul li dt {
     /*font-weight: bold;*/
     font-size: 16px;
-    margin-bottom: 3px;
+    /* margin-bottom: 3px;*/
 }
 .ui-content-item ul li dd {
     font-size:15px;
     padding-left: 4px;
-    color:#6D6868;
+    color:#999;
+}
+.ui-content-item ul li dd span{
+    white-space: nowrap;
+}
+.ui-content-item ul li dd span a{
+    color:#999;
 }
 .ui-tittle-kj .ui-ball-content dd{
     color:#6D6868;
@@ -426,9 +471,9 @@ input {
     top: 75%;
     margin-top: -12px;
 }
-/*.ui-icon-right.ui-icon-mage {
-  margin-top: 30px;
-}*/
+.ui-icon-right.ui-icon-mage {
+    top: 50%;
+}
 .ui-icon-right em {
     position: absolute;
     font-size: 0;
@@ -443,9 +488,17 @@ input {
     background: #ddd;
 }
 .ui-prom-body {
-    padding-top: 0.1rem;
+    padding-top: 5px;
 }
 /*底部*/
+.footer-fixed{
+    width:100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+
 .ui-footer footer,
 .ui-footer {
     text-align: center;
@@ -478,6 +531,7 @@ input {
     width: 100%;
     height: 45px;
     line-height:45px;
+    z-index:4;
 }
 .footer-bottom nav ul li {
     float: left;
@@ -505,13 +559,25 @@ input {
     background-image: linear-gradient(#00736c, #00736c);
     display: -webkit-box;
     display: -moz-box;
-    display: -o-box;
-    display: -ms-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    -webkit-box-align: center;
+    -moz-box-align: justify;
+    -ms-flex-align: center;
+    justify-content: space-between;
+    position: fixed;
+    left:0;
+    top:0;
+    z-index: 2;
     /*筛选*/
 }
 .topFixed{
     position: fixed;
     z-index: 1;
+    top: 0;
 }
 .nav-header a.btn-back {
     height: 45px;
@@ -520,10 +586,36 @@ input {
     /*  padding: 3px;*/
     text-align: center;
     display: block;
+    align-items: center;
+    -webkit-align-items: center;
+    -o-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -o-justify-content: center;
+    -ms-justify-content: center;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
+    display: -moz-box; /* Firefox 17- */
+    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
+    display: -moz-flex; /* Firefox 18+ */
+    display: -ms-flexbox; /* IE 10 */
+    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -o-box-sizing: content-box;
+    -ms-box-sizing: content-box;
+    box-sizing: content-box;
 }
 .nav-header .icon-back {
     width: 30px;
-    height: 35px;
+    height: 32px;
     vertical-align: middle;
     position: relative;
     display: inline-block;
@@ -615,6 +707,7 @@ input {
 /*列表公用高度*/
 .list-height40 {
     height: 40px;
+    line-height: 40px;
 }
 /*公用提示信息*/
 .ui-tip {
@@ -675,6 +768,14 @@ input {
     display: inline-block;
     width: 20%;
 }
+.ui-box-flex{
+    position:relative;
+}
+.ui-box-flex .ui-send-btn{
+    position:absolute;
+    right:2px;
+    top: 25px;
+}
 .ui-form-content .ui-label.ui-box-flex input.user_mobile {
     display: inline-block;
     width: 77%;
@@ -682,7 +783,7 @@ input {
 .ui-form-content .ui-label label {
     display: block;
     padding: 5px 0px;
-    font-size: 0.25rem;
+    font-size: 14px;
 }
 .ui-form-content .ui-label .ui-yazm {
     width: 20%;
@@ -728,6 +829,7 @@ input {
     background: #3F51B5;
     color: #fff;
     margin: auto;
+    vertical-align: middle;
 }
 .ui-btn-blue input {
     width: 100%;
@@ -758,6 +860,14 @@ input {
     border: none;
     color: #fff;
     cursor: pointer;
+}
+/*按钮浅绿色*/
+.ui-btn-lt-green {
+    min-width: 80%;
+    border-radius: 5px;
+    color: #fff;
+    margin: auto;
+    background: #009688;
 }
 /*公用确认按钮*/
 .ui-btn-single {
@@ -941,6 +1051,20 @@ input {
 .ui-border-none {
     border: none!important;
 }
+.ui-border-radius{
+    border-radius:5px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    -o-border-radius:5px;
+    -ms-border-radius:5px;
+}
+.ui-border-radius-circle{
+    border-radius:100%;
+    -webkit-border-radius:100%;
+    -moz-border-radius:100%;
+    -o-border-radius:100%;
+    -ms-border-radius:100%;
+}
 /*公用ui-border*/
 .ui-border-default {
     border: 1px solid #e7d5bb;
@@ -987,6 +1111,9 @@ ol li {
 }
 .ui-ft-right {
     float: right;
+}
+.ui-min-width{
+    min-width:20%!important;
 }
 .ui-col20 {
     width: 20%;
@@ -1281,15 +1408,21 @@ border:1px solid #e7d5bb;
 }
 /*lottery页面*/
 /*存款*/
+.ui-pd-top-15{
+    padding-top:15px!important;
+}
+.ui-pd-bottom-15{
+    padding-bottom:15px!important;
+}
 .ui-pd-lt15 {
-    padding-left: 0.15rem;
+    padding-left:15px;
 }
 .ui-content-item.ui-content-money .ui-dl-list {
     /*height: 90px;*/
     /*line-height: 30px;*/
 }
 .ui-content-item.ui-content-money .ui-dl-list .ui-icon-right {
-    margin: 0px;
+    /*   margin: 0px;*/
     /* position: absolute;
      right: 0.1rem;
      top: 0.3rem;*/
@@ -1300,7 +1433,7 @@ border:1px solid #e7d5bb;
 .ui-money-status {
     position: absolute;
     right: 27px;
-    top: 20px;
+    top: 15px;
 }
 .ui-money-status strong{
     font-size: 16px;
@@ -1487,7 +1620,7 @@ html .ui-pd-no{
 /*筛选按钮*/
 .ui-filter {
     background: url(../../images/portal/filter.png) center center no-repeat;
-    background-size: 0.4rem;
+    background-size: 23px;
 }
 /*时间*/
 .icon-time-filter {
@@ -1591,7 +1724,8 @@ html .ui-pd-no{
         opacity: 1; } }
 
 .line-spin-fade-loader {
-    position: relative; }
+    position: relative;
+}
 .line-spin-fade-loader > div:nth-child(1) {
     top: 20px;
     left: 0;
@@ -1680,7 +1814,67 @@ html .ui-pd-no{
     font-size:0.28rem;
 }
 
+/*选中银行卡*/
+.active .ui-right-ok{
+    position: absolute;
+    right:10px;
+    top:10px;
+    width: 50px;
+    height:50px;
+    line-height: 50px;
+    background-image: url("../../images/portal/ok.png");
+    -webkit-background-image: url("../../images/portal/ok.png");
+    -moz-background-image: url("../../images/portal/ok.png");
+    -o-background-image: url("../../images/portal/ok.png");
+    -ms-background-image: url("../../images/portal/ok.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px 50px;
+}
 
+
+/*修改密码成功提示*/
+.ui-pd-cotent{
+    padding:20px 0;
+}
+
+/* kjtime */
+.ui-kj-time{
+    font-family:宋体;
+    font-size:14px;
+}
+/* 活动页面 */
+.ui-active-content{
+    text-align:center;
+    padding:50px 0;
+    background-image: url(../img/chang_money.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 145px 66px;
+    opacity: 0.8;
+    filter:alpha(opacity=70);
+}
+.ui-active-item{
+    padding: 35px 8px;
+    background: #8BC34A;
+    /* width: 50px; */
+    /* height: 50px; */
+    width:17.33%;
+    display: inline-block;
+    /* margin: 20px 0; */
+    word-wrap: break-word;
+}
+.ui-active-add{
+    background: #e8ab52;
+}
+.ui-active-img{
+    /* height: 88px; */
+    /* line-height: 86px; */
+    width: 52.33%;
+    color: #365db5;
+    padding:36px 0px;
+    font-size:14px;
+}
 
 
 
@@ -1717,6 +1911,9 @@ html .ui-pd-no{
     .ui-ball-circle span{
         padding:3px!important;
     }
+    input{
+        font-size:11px;
+    }
 }
 @media screen and (max-width:320px){
     .ui-ball-circle span{
@@ -1732,6 +1929,15 @@ html .ui-pd-no{
     }
     .ui-table-main tr th:nth-child(5){
         width: 45px;
+    }
+    .ui-nav-bar a{
+        font-size:15px;
+    }
+    .ui-form-content .ui-label.ui-box-flex input.user_mobile{
+        width: 75%;
+    }
+    .ui-form-content .ui-label .ui-yazm{
+        height:25px;
     }
 }
 

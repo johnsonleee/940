@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    <title></title>
+    <link href="../css/index.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="nav-header">
+    <a href="../index.html" class="btn-back">
+        <i class="icon-back"></i>
+    </a>
+    <div class="all-title-contact">银行卡和邮箱</div>
+    <a href="javascript:void(0);" class="ui-btn-more">
+        <i class="iocn-more"></i>
+    </a>
+</div>
+<div class="content">
+    <!--项目主体-->
+    <div class="ui-prom-body">
+        <section>
+            <div class="ui-content-title ui-font-11">
+                你正在使用“银行卡信息+手机验证码”验证身份，请完成以下操作：
+                <a href="findFundPwd.html" class="more">重新选择验证方式&gt;</a>
+            </div>
+            <div class="ui-content-item">
+                <div  class="ui-form-content">
+                    <div class="ui-label">
+                        <label>开户银行：</label>
+                        <!--<input type="text" name="user_name" id="user_name" class="user_name" placeholder="请输入用户账号">-->
+                        <span class="ui-color-red">农业银行(尾号555)</span>
+                    </div>
+                    <div class="ui-label">
+                        <label>银行卡号：</label>
+                        <input type="text" name="banknumber" id="banknumber" class="banknumber" placeholder="请输入银行卡号">
+                    </div>
+                    <div class="ui-label">
+                        <label>手机号码：</label>
+                        <!--<input type="text" name="user_name" id="user_name" class="user_name" placeholder="请输入用户账号">-->
+                        <span class="ui-color-red">+86 15********81</span>
+                    </div>
+                    <div class="ui-label">
+                        <label><span class="ui-porimter">*</span>验证码：</label>
+                        <input type="text" name="user_yazm" id="user_yazm" class="user_yazm" placeholder="请输入验证码">
+                        <div class="ui-btn-blue ui-col20 ui-disinline ui-min-width">
+                            <input type="button" name="button" id="ui-yazm"  class="button" value="发送">
+                        </div>
+                        <div class="ui-tip-error ui-text-ft">✖请输入收到的验证码</div>
+                    </div>
+                    <div class="ui-btn-blue ui-margint10">
+                        <input type="button" name="button" id="button" onclick="javascript:window.location.href='setingpwd.html'" class="button" value="下一步">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <!--项目主体end-->
+</div>
+
+<div id="top-animation">顶部</div>
+<!--公用js-->
+<script type="text/javascript" src="../js/lib/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../js/comm.js"></script>
+</body>
+</html>
