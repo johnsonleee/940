@@ -20,6 +20,7 @@
     <script type="text/javascript" src="scripts/layer/layer.js"></script>
     <script type="text/javascript" src="scripts/publick/comm.js"></script>
     <script type="text/javascript" src="scripts/user.js"></script>
+    <script type="text/javascript" src="scripts/js/AjaxUpload.js"></script>
 </head>
 
 <body>
@@ -519,29 +520,42 @@
             alert($(this).serialize());
             return false;
         });
-
+        console.log($('#uploadForm').serialize());
+        var filename = $("#fileElem").val();
         var urlimg='http://940.com/upload?id_good='+$(".membero").html().replace(/[^0-9]/ig,"");
    /*     $("#uploadForm").submit(function(data,event){
             alert(1);
         } );*/
-        var formData = new FormData($( "#uploadForm" )[0]);
-        $.ajax({
-            url: urlimg,
+      //var formData = new FormData($( "#uploadForm" )[0]);
+        /*$.ajax({
             type: 'POST',
-            data: formData,
-            async: false,
-            cache: false,
+            url: urlimg,
+            enctype: 'multipart/form-data',
+            data: {
+                file: filename
+            },
+            *//*async: false,
+            cache: false,*//*
             dataType:'jsonp',
             jsonp: 'callback',
             contentType: false,
             processData: false,
             success: function (data) {
                     alert(data.tips);
+                console.log(data);
+
             },
             error: function (data) {
                 alert(data.tips);
             }
-        });
+        });*/
+
+
+        /*利用上传插件上传*/
+
+
+
+
         //http://940.com/upload?id_good=上传接口
     }
 

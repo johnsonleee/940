@@ -1,4 +1,4 @@
-<li ng-repeat="free in shop track by $index">
+<li ng-repeat="free in shop track by $index" on-finish-render-filters>
 <a href="shopDetail.html?id={{free.id}}">
             <dl class="shop-stu">
                 <dt><img src="{{free.preview}}"></dt>

@@ -27,9 +27,9 @@
 <div id="menu" class="menu">
     <ul>
         <li>
-            <a href="###">
+            <a href="login.html">
                 <i class="menu-icon1"></i>
-                <span>907350373@qq.com</span>
+                <span>登录</span>
             </a>
         </li>
         <li>
@@ -62,12 +62,12 @@
                 <span>讲师团队</span>
             </a>
         </li>
-        <li>
+<!--         <li>
             <a href="###">
                 <i class="menu-icon7"></i>
                 <span>退出登录</span>
             </a>
-        </li>
+        </li> -->
     </ul>
 </div>
 
@@ -266,7 +266,7 @@
             <a href="courses.html">
                 <img src="content/images/940/footer_icon3.jpg" alt="课程介绍">
             </a>
-            <a href="#">
+            <a href="enrolled.html">
                 <img src="content/images/940/footer_icon4.jpg" alt="在线报名">
             </a>
             <a href="#" class="footer-animation">
@@ -339,7 +339,7 @@
                 var $parent = $(this).parent();
                 var _html = $parent.html();
                 $parent.html(selectHtml);
-                var url = "../mobile/json/area.json";
+                var url = "json/area.json";
                 var areaJson;
                 var temp_html;
                 var oProvince = $(".province");
@@ -367,11 +367,13 @@
                 oProvince.change(function() {
                     oProvince.siblings('.select_text_ui').html(oProvince.val())
                     city();
+                    // This.uesrData.address = oProvince.val() + '-' + oCity.val();
                     $thisdress = oProvince.val() + '-' + oCity.val();
                 });
                 oCity.change(function() {
                     oCity.siblings('.select_text_ui').html(oCity.val());
-                     $thisdress = oProvince.val() + '-' + oCity.val();
+                    // This.uesrData.address = oProvince.val() + '-' + oCity.val();
+                    $thisdress = oProvince.val() + '-' + oCity.val();
                 });
                 //获取json数据
                 $.getJSON(url, function(data){

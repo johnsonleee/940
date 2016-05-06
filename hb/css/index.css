@@ -27,6 +27,15 @@ form {
     -ms-text-size-adjust : none ;
     text-size-adjust : none
 }*/
+//禁止用户
+* {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
 /*公用部分*/
 html {
     -ms-touch-action: none;
@@ -35,10 +44,10 @@ html {
 .css {
     -webkit-user-select: none;
 }
-input[type=radio]::-ms-check,
+/* input[type=radio]::-ms-check,
 input[type=checkbox]::-ms-check {
     display: none;
-}
+} */
 i {
     font-style: normal;
 }
@@ -89,6 +98,7 @@ html {
     *//*字体 0.16rem 太小了，无法和小背景图片行高居中对齐（安卓手机兼容不到）*//*
     font-size:16px;
 }*/
+
 img {
     border: none;
 }
@@ -103,6 +113,28 @@ a:hover {
 }
 input {
     outline: none;
+}
+/*行高  */
+.ui-line-height{
+    line-height:20px;
+}
+/* 公用一行显示 */
+.ui-row-box{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.ui-row-span{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -o-flex: 1;
+    -moz-flex: 1;
+    flex: 1;
 }
 /*公用字体*/
 .ui-font-18{
@@ -791,17 +823,26 @@ input {
     display: inline-block;
 }
 .ui-form-content .ui-label input {
-    text-indent: 0.15rem;
+    text-indent: 1em;
     width: 100%;
     display: block;
     border: 1px solid #e6dcc3;
     border-radius: 5px;
     min-height: 30px;
+    height:30px;
+    line-height:30px;
+    /* vertical-align: text-bottom; */
+    font-size:0.9em;
+}
+.ui-form-content .ui-label input.button{
+    text-indent:inherit;
+    height:100%;
 }
 .ui-form-content .ui-label input[type='checkbox'] {
-    width: initial!important;
+    /*  width: initial!important; */
     margin-right: 0px;
     min-height:20px;
+    height:20px;
 }
 .ui-form-content .ui-label input.user_yazm {
     width: 76%;
@@ -814,6 +855,8 @@ input {
     border: 1px solid #e6dcc3;
     border-radius: 5px;
     min-height: 30px;
+    vertical-align:middle;
+    height:30px;
 }
 .ui-form-content .ui-label textarea {
     text-indent: 0.15rem;
@@ -841,6 +884,7 @@ input {
     border: none;
     color: #fff;
     cursor: pointer;
+    font-size:0.8em;
 }
 /*按钮红色*/
 .ui-btn-red {
@@ -860,6 +904,7 @@ input {
     border: none;
     color: #fff;
     cursor: pointer;
+    font-size:0.8em;
 }
 /*按钮浅绿色*/
 .ui-btn-lt-green {
@@ -896,6 +941,12 @@ input {
 /*padding-bottom:0*/
 .ui-pd-bottom-none{
     padding-bottom:0!important;
+}
+.ui-indent-no{
+    text-indent:inherit!important;
+}
+.ui-indent1{
+    text-indent:1px!important;
 }
 /*公用ui-letter-none*/
 .ui-letter-none{
@@ -1414,6 +1465,12 @@ border:1px solid #e7d5bb;
 .ui-pd-bottom-15{
     padding-bottom:15px!important;
 }
+.ui-pd-bottom-10{
+    padding-bottom:10px!important;
+}
+.ui-pd-bottom-5{
+    padding-bottom:10px!important;
+}
 .ui-pd-lt15 {
     padding-left:15px;
 }
@@ -1671,43 +1728,44 @@ html .ui-pd-no{
     top: 50%;
     left: 50%;
     border: 0;
-    flex: 0 1 auto;
-    flex-direction: column;
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 25%;
     max-width: 25%;
-    height: 96px;
-    align-items: center;
-    -webkit-align-items: center;
-    -o-align-items: center;
-    -moz-align-items: center;
-    -ms-align-items: center;
-    justify-content: center;
-    -webkit-justify-content: center;
-    -moz-justify-content: center;
-    -o-justify-content: center;
-    -ms-justify-content: center;
     width: 96px;
+    height: 96px;
     border-radius: 5px;
     margin-left:-43px;
     margin-top:-43px;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -o-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    display: -webkit-box; /* Chrome 4+, Safari 3.1, iOS Safari 3.2+ */
-    display: -moz-box; /* Firefox 17- */
-    display: -webkit-flex; /* Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16 */
-    display: -moz-flex; /* Firefox 18+ */
-    display: -ms-flexbox; /* IE 10 */
-    display: flex; /* Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+ */
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box;
-    -o-box-sizing: content-box;
-    -ms-box-sizing: content-box;
-    box-sizing: content-box;
+    text-align: center;
+    /*  flex: 0 1 auto;
+     flex-direction: column;
+     flex-grow: 1;
+     flex-shrink: 0;
+     flex-basis: 25%;
+     align-items: center;
+     -webkit-align-items: center;
+     -o-align-items: center;
+     -moz-align-items: center;
+     -ms-align-items: center;
+     justify-content: center;
+     -webkit-justify-content: center;
+     -moz-justify-content: center;
+     -o-justify-content: center;
+     -ms-justify-content: center;
+     -moz-box-sizing: border-box;
+     -webkit-box-sizing: border-box;
+     -o-box-sizing: border-box;
+     -ms-box-sizing: border-box;
+     box-sizing: border-box;
+     display: -webkit-box; Chrome 4+, Safari 3.1, iOS Safari 3.2+
+     display: -moz-box; Firefox 17-
+     display: -webkit-flex; Chrome 21+, Safari 6.1+, iOS Safari 7+, Opera 15/16
+     display: -moz-flex; Firefox 18+
+     display: -ms-flexbox; IE 10
+     display: flex; Chrome 29+, Firefox 22+, IE 11+, Opera 12.1/17/18, Android 4.4+
+     -moz-box-sizing: content-box;
+     -webkit-box-sizing: content-box;
+     -o-box-sizing: content-box;
+     -ms-box-sizing: content-box;
+     box-sizing: content-box; */
 }
 @-webkit-keyframes line-spin-fade-loader {
     50% {
@@ -1725,6 +1783,8 @@ html .ui-pd-no{
 
 .line-spin-fade-loader {
     position: relative;
+    display:inline-block;
+    top: 28%;
 }
 .line-spin-fade-loader > div:nth-child(1) {
     top: 20px;
@@ -1847,7 +1907,7 @@ html .ui-pd-no{
 .ui-active-content{
     text-align:center;
     padding:50px 0;
-    background-image: url(../img/chang_money.png);
+    background-image: url(../../images/portal/chang_money.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 145px 66px;
@@ -1876,7 +1936,22 @@ html .ui-pd-no{
     font-size:14px;
 }
 
+/* 下拉刷新 */
+#wrapper {
+    position:absolute; z-index:1;
+    top:45px; bottom:48px; left:-9999px;
+    width:100%;
+    background:#aaa;
+    overflow:auto;
+}
 
+#scroller {
+    position:absolute; z-index:1;
+    /*	-webkit-touch-callout:none;*/
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    width:100%;
+    padding:0;
+}
 
 
 
@@ -1912,7 +1987,7 @@ html .ui-pd-no{
         padding:3px!important;
     }
     input{
-        font-size:11px;
+        font-size:14px;
     }
 }
 @media screen and (max-width:320px){
@@ -1931,7 +2006,7 @@ html .ui-pd-no{
         width: 45px;
     }
     .ui-nav-bar a{
-        font-size:15px;
+        font-size:0.7em;
     }
     .ui-form-content .ui-label.ui-box-flex input.user_mobile{
         width: 75%;
@@ -1940,7 +2015,11 @@ html .ui-pd-no{
         height:25px;
     }
 }
-
+@media screen and (max-width:414px){
+    .ui-form-content .ui-label .ui-yazm{
+        height:25px;
+    }
+}
 @media screen and (min-width:768px){
     .ui-kj-detail tbody tr td{
         height:35px;

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximu-sacle=1.0,user-scalable=no">
+    <title></title>
+    <script src="../js/lib/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+        <form>
+            <input type="date" id="year" value="2016-01-01"  name="year" placeholder="请输入日期">
+        </form>
+<script>
+ $(function(){
+     $("input[name=year]").change(function(){
+         var dateValue=$("input[name=year]").val();
+         alert(dateValue);
+     });
+
+ })
+</script>
+</body>
+</html>

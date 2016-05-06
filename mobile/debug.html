@@ -1,226 +1,175 @@
-﻿<!DOCTYPE html>
-<!-- saved from url=(0035)http://192.168.16.153:88/index.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <!-- <meta content="width=600px,target-densitydpi=300,user-scalable=no" name="viewport"> -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no">
-    <meta http-equiv="Expires" content="-1">
-    <meta http-equiv="Cache-Control" content="no-cache">
-    <meta http-equiv="Pragma" content="no-cache">
-    <title>Document</title>
-    <style type="text/css">
-        *{padding:0;margin: 0;font-family: '微软雅黑';list-style: none;}
-        html,body{width: :100%;height: 100%;}
-        #wrap{overflow: hidden;position: relative;padding-bottom: 60px;}
-        .input-bar{
-            width: 100%;
-            height: 50px;
-            bottom: 0px;
-            left: 0;
-            position: fixed;
-            background: red
-            display:-moz-box;
-            display:-webkit-box;
-            display:box;
-            padding: 6px 10px 6px 10px;
-            background: #f2f2f2;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-            box-sizing: border-box;
-        }
-        .input-bar .com{
-            height: 100%;
-            display: block;
-            -webkit-box-flex: 1;
-            box-flex: 1;
-        }
-        .input-bar .com.area{width: 80%}
-        .input-bar .com.bnt{min-width: 50px;max-width: 50px;margin-left: 10px;border-radius: 2px;}
-        .input-bar .com .textarea{
-            display: block;
-            width: 100%;
-            height: 37px;
-            line-height: 22px;
-            margin-left: -1px;
-            border: 1px solid #ccc;
-            resize: none;
-            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
-            outline: none;
-            padding:2px;
-            box-sizing: border-box;
-            font-size: 14px;
-        }
-        .input-bar .com.bnt .btn-send{
-            display: inline-block;
-            height: 36px;
-            width: 100%;
-            line-height: 36px;
-            box-sizing: border-box;
-            text-align: center;
-            border-radius: 2px;
-            background: #ee6800;
-            color: #fff;
-            font-size: 14px;
-            text-shadow: 1px 0 0 rgba(0, 0, 0, 0.3);
-            text-decoration: none;
-        }
-        #content{width: 100%;overflow-y: auto;height:-webkit-calc(100% - 80px);height:calc(100% - 80px);padding-bottom: 20px;}
-        #content ul{padding: 0px 0 0px;margin: 0 auto;max-width: 700px;}
-        #content ul .msg-time {
-            color: #999;
-            font-size: 12px;
-            line-height: 12px;
-            text-align: center;
-            letter-spacing: 1px;
-            margin: 10px 0 0;
-            text-shadow: 1px 1px 0 white;
-            font: 14px/1.5 "微软雅黑", Tahoma, Arial, "宋体";
-        }
-        .msg-worker, .msg-visitor {
-            padding-left: 52px;
-            min-height: 34px;
-            margin: 10px 0 0;
-            position: relative;
-        }
-
-        .chat-content .msg-worker .chat-word, .chat-content .msg-visitor p {
-            display: inline-block;
-            max-width: 450px;
-            min-height: 15px;
-            font-size: 15px;
-            text-align: left;
-            line-height: 18px;
-            padding: 12px;
-            margin-right: 17px;
-            border: 1px solid #ddd;
-            position: relative;
-            border-radius: 4px;
-            word-wrap: break-word;
-            word-break: break-all;
-        }
-        .chat-content .msg-worker .chat-word {
-            background: #fff;
-            box-shadow: 1px 1px 2px rgba(55, 55, 55, 0.1);
-        }
-        .chat-content .msg-visitor {
-            text-align: right;
-            padding-left: 70px;
-            padding-right: 1px;
-        }
-        .chat-content .msg-visitor p {
-            background: #ffebdc;
-            box-shadow: -1px 1px 2px rgba(55, 55, 55, 0.1);
-        }
-        .chat-content .msg-worker .chat-word i, .chat-content .msg-visitor p i {
-            display: block;
-            width: 10px;
-            height: 12px;
-            position: absolute;
-            top: 7px;
-            background-image: url(http://www1.53kf.com/mobile/img/icon-sprites.png?asdadas111d11);
-        }
-        .chat-content .msg-visitor p i {
-            background-position: -69px 0;
-            right: -10px;
-        }
-        .chat-content .msg-worker .chat-word i {
-            background-position: -59px 0;
-            left: -10px;
-        }
-        .chat-content .msg-worker .avatar2 {
-            display: block;
-            width: 30px;
-            height: 30px;
-           /*  background: url(http://www1.53kf.com/mobile/img/default_logo.png); */
-            position: absolute;
-            top: 0;
-            left: 7px;
-            overflow: hidden;
-            border-radius: 4px;
-        }
-    </style>
-    <link rel="stylesheet" type="text/css" href="scripts/debug/index.css">
-    <script src="scripts/debug/client.socket.js"></script>
-    <script type="text/javascript">
-        window.onload = function(){
-            var btnSend = document.getElementById('btn-send');
-            var textarea = document.getElementById('textarea');
-            var wrap = document.getElementById('wrap');
-            var content = document.getElementById('content')
-            var oUl = content.getElementsByTagName('ul')[0];
-            
-            var socket = socket = io.connect('http://192.168.16.153:88');
-            socket.on('aa', function(data) {
-                var myDate = new Date();
-                var t = myDate.getMonth()+1+'月'+myDate.getDate()+'日 '+myDate.getHours()+':'+myDate.getMinutes();
-                oUl.innerHTML+='<li class="msg-time" name="msg-time">'+t+'</li>\
-                                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>'+data+'</div></li>'
-            });
-
-            btnSend.onclick = function(){
-
-                var myDate = new Date();
-                var t = myDate.getMonth()+1+'月'+myDate.getDate()+'日 '+myDate.getHours()+':'+myDate.getMinutes();
-
-                oUl.innerHTML += '<li class="msg-time" name="msg-time">'+t+'</li>\
-                                  <li class="msg-visitor"><p><i></i>'+textarea.value+'</p></li>';
-                socket.emit('bb', textarea.value);
-                textarea.value = ''
-                document.body.scrollTop = oUl.offsetHeight-document.documentElement.clientHeight + 100
-            }
-            
-            document.body.scrollTop = oUl.offsetHeight-document.documentElement.clientHeight + 100
-            
-        }
-    </script>
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="description" content="基于HTML5的多图Ajax上传 » 张鑫旭-鑫空间-鑫生活" />
+<meta name="description" content="张鑫旭web前端学习实例页面 基于HTML5的多图Ajax上传" />
+<meta name="keywords" content="web前端, HTML5, ajax, javascript, 图片上传" />
+<meta name="author" content="张鑫旭, zhangxixnu" />
+<title>基于HTML5的多图Ajax上传 » 张鑫旭-鑫空间-鑫生活</title>
+<link rel="stylesheet" type="text/css" href="content/themes/debug.css">
+<style>
+.upload_box{width:800px; margin:1em auto;}
+.upload_main{border-width:1px 1px 2px; border-style:solid; border-color:#ccc #ccc #ddd; background-color:#fbfbfb;}
+.upload_choose{padding:1em;}
+.upload_drag_area{display:inline-block; width:60%; padding:4em 0; margin-left:.5em; border:1px dashed #ddd; background:#fff url(http://rescdn.qqmail.com/zh_CN/htmledition/images/func/dragfile07bf38.gif) no-repeat 20px center; color:#999; text-align:center; vertical-align:middle;}
+.upload_drag_hover{border-color:#069; box-shadow:inset 2px 2px 4px rgba(0, 0, 0, .5); color:#333;}
+.upload_preview{border-top:1px solid #bbb; border-bottom:1px solid #bbb; background-color:#fff; overflow:hidden; _zoom:1;}
+.upload_append_list{height:300px; padding:0 1em; float:left; position:relative;}
+.upload_delete{margin-left:2em;}
+.upload_image{max-height:250px; padding:5px;}
+.upload_submit{padding-top:1em; padding-left:1em;}
+.upload_submit_btn{display:none; height:32px; font-size:14px;}
+.upload_loading{height:250px; background:url(http://www.zhangxinxu.com/study/image/loading.gif) no-repeat center;}
+.upload_progress{display:none; padding:5px; border-radius:10px; color:#fff; background-color:rgba(0,0,0,.6); position:absolute; left:25px; top:45px;}
+</style>
 </head>
+
 <body>
-    <div id="wrap">
-        <div id="content">
-            <ul class="chat-content">
-                <!-- <li class="msg-time" name="msg-time">4月8日 13:14</li>
-                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>美国上市公司--达内欢迎您！目前达内有免费试读30天，只需留下手机号码即可，限额40名，抢到就是赚到！</div></li>
-                <li class="msg-time" name="msg-time">4月8日 13:14</li>
-                <li class="msg-visitor"><p><i></i>5656</p></li>
-                <li class="msg-time" name="msg-time">4月8日 13:14</li>
-                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>美国上市公司--达内欢迎您！目前达内有免费试读30天，只需留下手机号码即可，限额40名，抢到就是赚到！</div></li>
-                <li class="msg-time" name="msg-time">4月8日 13:14</li>
-                <li class="msg-visitor"><p><i></i>5656</p></li>
-                <li class="msg-time" name="msg-time">4月8日 13:14</li>
-                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>美国上市公司--达内欢迎您！目前达内有免费试读30天，只需留下手机号码即可，限额40名，抢到就是赚到！</div></li>
-                <li class="msg-time" name="msg-time">4月8日 13:14</li>
-                <li class="msg-visitor"><p><i></i>5656</p></li>
-                <li class="msg-time" name="msg-time">4月8日 13:14</li>
-                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>美国上市公司--达内欢迎您！目前达内有免费试读30天，只需留下手机号码即可，限额40名，抢到就是赚到！</div></li>
-                <li class="msg-time" name="msg-time">4月8日 13:14</li>
-                <li class="msg-visitor"><p><i></i>5656</p></li>
-                <li class="msg-time" name="msg-time">4月8日 13:14</li>
-                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>美国上市公司--达内欢迎您！目前达内有免费试读30天，只需留下手机号码即可，限额40名，抢到就是赚到！</div></li>
-                <li class="msg-time" name="msg-time">4月8日 13:14</li>
-                <li class="msg-visitor"><p><i></i>5656</p></li>
-                <li class="msg-time" name="msg-time">4月8日 13:14</li>
-                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>美国上市公司--达内欢迎您！目前达内有免费试读30天，只需留下手机号码即可，限额40名，抢到就是赚到！</div></li>
-                <li class="msg-time" name="msg-time">4月8日 13:14</li>
-                <li class="msg-visitor"><p><i></i>5656</p></li>
-                <li class="msg-time" name="msg-time">4月8日 13:14</li>
-                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>美国上市公司--达内欢迎您！目前达内有免费试读30天，只需留下手机号码即可，限额40名，抢到就是赚到！</div></li>
-                <li class="msg-time" name="msg-time">4月8日 13:14</li>
-                <li class="msg-visitor"><p><i></i>5656</p></li>
-                <li class="msg-time" name="msg-time">4月8日 13:14</li>
-                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>美国上市公司--达内欢迎您！目前达内有免费试读30天，只需留下手机号码即可，限额40名，抢到就是赚到！</div></li>
-                <li class="msg-time" name="msg-time">4月8日 13:14</li>
-                <li class="msg-visitor"><p><i></i>大概大概豆腐干豆腐干豆腐干豆腐干</p></li> -->
-<!--             <li class="msg-time" name="msg-time">4月8日 14:32</li>                                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>豆腐干地方</div></li><li class="msg-time" name="msg-time">4月8日 14:32</li>                                <li class="msg-visitor"><p><i></i>和大厦的回家看
-</p></li><li class="msg-time" name="msg-time">4月8日 14:32</li>                               <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>发挥规范化</div></li><li class="msg-time" name="msg-time">4月8日 14:32</li>                                <li class="msg-visitor"><p><i></i>hoho
-</p></li><li class="msg-time" name="msg-time">4月8日 14:33</li>                               <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>突然讨厌热天</div></li><li class="msg-time" name="msg-time">4月8日 14:33</li>                             <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>lol</div></li><li class="msg-time" name="msg-time">4月8日 14:33</li>                                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>High </div></li><li class="msg-time" name="msg-time">4月8日 14:34</li>                              <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>哈哈哈</div></li><li class="msg-time" name="msg-time">4月8日 14:34</li>                                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>寄过来</div></li><li class="msg-time" name="msg-time">4月8日 14:34</li>                                <li class="msg-worker"><span class="avatar2"></span><div class="chat-word"><i></i>l k k</div></li> -->
-            </ul>
-        </div>
-        <div class="input-bar">
-            <div class="com area"><textarea class="textarea" id="textarea"></textarea></div>
-            <div class="com bnt"><a href="javascript:;" class="btn-send" id="btn-send">发送</a></div>
+<div id="header">
+    <a href="http://www.zhangxinxu.com/" class="logo" title="回到鑫空间-鑫生活首页">
+        <img src="http://www.zhangxinxu.com/php/image/zxx_home_logo.png" border="0" />
+    </a>
+</div>
+<div id="main">
+    <h1>基于HTML5的多图Ajax上传实例页面</h1>
+    <div id="body" class="light">
+        <div id="content" class="show">
+            <h3>展示</h3>
+            <div class="article_new"><a href="http://www.zhangxinxu.com/wordpress/?p=1923">回到相关文章 »</a></div>
+            <div class="demo">
+                <form id="uploadForm" action="http://www.940.com/upload" method="post" enctype="multipart/form-data">
+                    <div class="upload_box">
+                        <div class="upload_main">
+                            <div class="upload_choose">
+                                <input id="fileImage" type="file" size="30" name="fileselect[]" multiple />
+                                <span id="fileDragArea" class="upload_drag_area">或者将图片拖到此处</span>
+                            </div>
+                            <div id="preview" class="upload_preview"></div>
+                        </div>
+                        <div class="upload_submit">
+                            <button type="submit" id="fileSubmit" class="upload_submit_btn">确认上传图片</button>
+                        </div>
+                        <div id="uploadInf" class="upload_inf"></div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
+</div>
+<div id="footer">
+    Designed &amp; Powerd by <a href="http://www.zhangxinxu.com/">zhangxinxu</a><br />
+    Copyright© 张鑫旭-鑫空间-鑫生活<br>
+    <a href="http://www.miibeian.gov.cn/" target="_blank">鄂ICP备09015569号</a>
+</div>
+<script src="http://libs.baidu.com/jquery/1.4.4/jquery.js"></script>
+<script src="scripts/debug/zxxFile.js"></script>
+<script>
+var params = {
+    fileInput: $("#fileImage").get(0),
+    dragDrop: $("#fileDragArea").get(0),
+    upButton: $("#fileSubmit").get(0),
+    url: $("#uploadForm").attr("action"),
+    filter: function(files) {
+        var arrFiles = [];
+        for (var i = 0, file; file = files[i]; i++) {
+            if (file.type.indexOf("image") == 0) {
+                if (file.size >= 512000) {
+                    alert('您这张"'+ file.name +'"图片大小过大，应小于500k');
+                } else {
+                    arrFiles.push(file);
+                }
+            } else {
+                alert('文件"' + file.name + '"不是图片。');
+            }
+        }
+        return arrFiles;
+    },
+    onSelect: function(files) {
+        var html = '', i = 0;
+        $("#preview").html('<div class="upload_loading"></div>');
+        var funAppendImage = function() {
+            file = files[i];
+            if (file) {
+                var reader = new FileReader()
+                reader.onload = function(e) {
+                    html = html + '<div id="uploadList_'+ i +'" class="upload_append_list"><p><strong>' + file.name + '</strong>'+
+                        '<a href="javascript:" class="upload_delete" title="删除" data-index="'+ i +'">删除</a><br />' +
+                        '<img id="uploadImage_' + i + '" src="' + e.target.result + '" class="upload_image" /></p>'+
+                        '<span id="uploadProgress_' + i + '" class="upload_progress"></span>' +
+                    '</div>';
 
-</body></html>
+                    i++;
+                    funAppendImage();
+                }
+                reader.readAsDataURL(file);
+            } else {
+                $("#preview").html(html);
+                if (html) {
+                    //删除方法
+                    $(".upload_delete").click(function() {
+                        ZXXFILE.funDeleteFile(files[parseInt($(this).attr("data-index"))]);
+                        return false;
+                    });
+                    //提交按钮显示
+                    $("#fileSubmit").show();
+                } else {
+                    //提交按钮隐藏
+                    $("#fileSubmit").hide();
+                }
+            }
+        };
+        funAppendImage();
+    },
+    onDelete: function(file) {
+        $("#uploadList_" + file.index).fadeOut();
+    },
+    onDragOver: function() {
+        $(this).addClass("upload_drag_hover");
+    },
+    onDragLeave: function() {
+        $(this).removeClass("upload_drag_hover");
+    },
+    onProgress: function(file, loaded, total) {
+        var eleProgress = $("#uploadProgress_" + file.index), percent = (loaded / total * 100).toFixed(2) + '%';
+        eleProgress.show().html(percent);
+    },
+    onSuccess: function(file, response) {
+        $("#uploadInf").append("<p>上传成功，图片地址是：" + response + "</p>");
+    },
+    onFailure: function(file) {
+        $("#uploadInf").append("<p>图片" + file.name + "上传失败！</p>");
+        $("#uploadImage_" + file.index).css("opacity", 0.2);
+    },
+    onComplete: function() {
+        //提交按钮隐藏
+        $("#fileSubmit").hide();
+        //file控件value置空
+        $("#fileImage").val("");
+        $("#uploadInf").append("<p>当前图片全部上传完毕，可继续添加上传。</p>");
+    }
+};
+ZXXFILE = $.extend(ZXXFILE, params);
+ZXXFILE.init();
+</script>
+
+<!-- 下面的是广告部分，酱油厂的 -->
+<!-- <div id="ad">
+    <script type="text/javascript"> google_ad_client = "pub-0090627341039040";google_ad_slot = "2041257798";google_ad_width = 468;google_ad_height = 60;</script><script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-11205167-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script');
+         ga.type = 'text/javascript';
+         ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+</div> -->
+</body>
+</html>

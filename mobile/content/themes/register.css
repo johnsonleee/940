@@ -29,9 +29,9 @@ a
     outline: none;
     cursor: pointer;
 }
-/* a,button,input,textarea{
+a,button,input,textarea{
     -webkit-tap-highlight-color: rgba(0,0,0,0);
-} */
+}
 ins {
     text-decoration: none;
 }

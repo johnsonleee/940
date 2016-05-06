@@ -578,7 +578,7 @@ qcVideo('css', function() {
     }
     return {
         getWidth: function(e) {
-            return (css.getComputedStyle(e, 'width') || "").toLowerCase().replace('%', '') | 0;
+            return (css.getComputedStyle(e, 'width') || "").toLowerCase().replace('px', '') | 0;
         },
         getHeight: function(e) {
             return (css.getComputedStyle(e, 'height') || "").toLowerCase().replace('px', '') | 0;
@@ -1172,7 +1172,8 @@ qcVideo('version', function() {
                 }
             } catch (e) {
                 return !1;
-            } else
+            }
+        else
             try {
                 if (navigator.plugins && navigator.plugins.length > 0) {
                     swf = navigator.plugins["Shockwave Flash"];
@@ -1194,12 +1195,20 @@ qcVideo('version', function() {
         return v.ABLE_FLASH ? (v.FLASH_VERSION <= 10 ? 'lowVersion' : 'able') : '';
     };
     var ableHlsJs = window.MediaSource && window.MediaSource.isTypeSupported('video/mp4; codecs="avc1.42E01E,mp4a.40.2"') ? true : false;
-    if (v.ANDROID && !v.ABLE_H5_HLS) {
-        if (agent.substr(agent.indexOf('Android') + 8, 1) >= 4) {}
-    }
+    var forceCheckHLS = function() {
+        if (v.ANDROID && !v.ABLE_H5_HLS) {
+            if (agent.substr(agent.indexOf('Android') + 8, 1) >= 4) {
+                return true;
+            }
+        }
+        return false;
+    };
     v.REQUIRE_HLS_JS = ableHlsJs && !v.ABLE_H5_HLS && !v.ABLE_H5_APPLE_HLS;
     v.getLivePriority = function() {
         if (v.IOS || v.ANDROID) {
+            if (forceCheckHLS()) {
+                v.ABLE_H5_HLS = true;
+            }
             return 'h5';
         }
         if (!v.ABLE_FLASH && v.ABLE_H5_MP4) {
@@ -2026,9 +2035,9 @@ qcVideo('startup_tpl', function() {
                </div>\r\n\
            </div>\r\n\
    \r\n\
-           <div style="color: red;text-align: center;position: absolute;width: 99%;height: 50%;  font-size: 1rem;"\r\n\
+           <div style="color: red;text-align: center;position: absolute;width: 99%;height: 50%;"\r\n\
            data-area="error" style="display:none;"> </div>\r\n\
-           <div data-area="loading" style="text-align: center;position: absolute;width: 99%;height: 50%;font-size: 1rem;display:none;">loading....</div>\r\n\
+           <div data-area="loading" style="text-align: center;position: absolute;width: 99%;height: 50%;display:none;">loading....</div>\r\n\
     </div>');
             return __p.join("");
         },
@@ -2992,6 +3001,9 @@ qcVideo('Patch', function($, UICom, UiControl, util) {
                         me._setPoster(me._poster);
                     }
                     break;
+                case (m.DRAG):
+                    me.store.happenToSdk('dragPlay:' + data['time']);
+                    break;
             }
         },
         _setPoster: function(obj) {
@@ -3019,7 +3031,7 @@ qcVideo('Patch', function($, UICom, UiControl, util) {
                         });
                         $el.html(tpl['patch_image']({
                             'astyle': style,
-                            'istyle': 'z-index: 31;position: absolute;border:none' + ';top: ' + (offset.height >= target.height ? (offset.height - target.height) / 2 + 'px' : '0px') + ';left: ' + (offset.width >= target.width ? (offset.width - target.width) / 2 + 'px' : '0px') + ';width:' + target.width + 'px;height:' + target.height + 'px',
+                            'istyle': 'z-index: 31;position: absolute;border:none' + ';top: ' + (offset.height >= target.height ? Math.round((offset.height - target.height) / 2) + 'px' : '0px') + ';left: ' + (offset.width >= target.width ? Math.round((offset.width - target.width) / 2) + 'px' : '0px') + ';width:' + (-Math.floor(-target.width)) + 'px;height:' + (-Math.floor(-target.height)) + 'px',
                             'url': obj.url,
                             'link': link
                         }));
@@ -3244,6 +3256,7 @@ qcVideo('MediaPlayer', function($, Base, UiControl, PlayerSystem, PlayerStore, M
             me.whenReadyToPlay = true;
             me.__filter_play();
             me.system.play(second);
+            me.control.setDragPlay(second);
         },
         toPlay: function(second) {
             var me = this;
@@ -3822,7 +3835,7 @@ qcVideo('MediaPlayer_tpl', function() {
             _p('control-bottom ');
             _p(this.__escapeHtml(nick));
             _p('control-bottom-flow" component="bottom_container" style="display:none;">\r\n\
-           <div style="width:99%;height:36px;margin:0px auto;position:relative;  background: #000;">\r\n\
+           <div style="width:100%;height:36px;margin:0px auto;position:relative;  background: #000;">\r\n\
                <!--杩涘害鏍�-->\r\n\
                <div class="');
             _p(this.__escapeHtml(nick));
@@ -4079,21 +4092,21 @@ qcVideo('MediaPlayer_tpl', function() {
             _p('setting{z-index: 200;/*height: 100%;*/position: absolute;top: 0px;opacity: 0;width: 100%;color: #fff;font-size: 1rem;display:none;background-color:#000;text-align: center;}\r\n\
       .');
             _p(this.__escapeHtml(data.nick));
-            _p('setting-close{top: 45%;right: 2px;font-size: 2em;display: inline-block;padding: 3px;position: absolute;cursor: pointer;opacity: 0.6;}\r\n\
+            _p('setting-close{top: 74%;right: 44%;font-size: 60px;display: inline-block;padding: 3px;position: absolute;cursor: pointer;opacity: 0.6;}\r\n\
       .');
             _p(this.__escapeHtml(data.nick));
             _p('setting-close:hover{opacity: 1;}\r\n\
       .');
             _p(this.__escapeHtml(data.nick));
-            _p('setting .setting-split-line{width: 90%;height: 1px;background-color: rgb(0,160,233);border: none;margin: 0px auto;margin-bottom: 10px;}\r\n\
+            _p('setting .setting-split-line{width: 90%;height: 1px;background-color: rgb(0,160,233);border: none;margin: 0px auto;margin-bottom: 18px;}\r\n\
       .');
             _p(this.__escapeHtml(data.nick));
-            _p('setting .setting-definition{width: 100%;margin: 1em 0;font-size:1.5em;}\r\n\
+            _p('setting .setting-definition{width: 100%;margin: 1em 0 0.8em;}\r\n\
       .');
             _p(this.__escapeHtml(data.nick));
             _p('setting .setting-definition-value-curr,.');
             _p(this.__escapeHtml(data.nick));
-            _p('setting .setting-definition-value{font-size: 1.5em;display: inline-block;padding:2px 0.5em;}\r\n\
+            _p('setting .setting-definition-value{display: inline-block;padding:2px 0.5em;}\r\n\
       .');
             _p(this.__escapeHtml(data.nick));
             _p('setting .setting-definition-value:hover{color: rgb(0,160,233);}\r\n\
@@ -4143,13 +4156,13 @@ qcVideo('MediaPlayer_tpl', function() {
             _p('error {\r\n\
              position: absolute;\r\n\
              left: 0;\r\n\
-             top: 45%;\r\n\
+             top: 40%;\r\n\
              width: 100%;\r\n\
              height: 20%;\r\n\
              z-index: 102;\r\n\
              display: none;\r\n\
              text-align: center;\r\n\
-             font-size: 1rem;\r\n\
+             font-size: 30px;\r\n\
              color: red;\r\n\
        }');
             var keyFrames = ['@keyframes', '@-moz-keyframes', '@-webkit-keyframes'];
@@ -5043,6 +5056,7 @@ qcVideo('PlayerSystem', function($, Base, interval, constants, util, FullScreenA
         },
         volume: function(volume) {
             if (volume !== undefined) {
+                if (volume > 1) return;
                 if (this.video) {
                     this._volume = this.video.volume = volume;
                     this.status.set_volume(volume);
@@ -5284,6 +5298,11 @@ qcVideo('UiControl', function($, Base, util, constants, version) {
         setVolume: function(percent) {
             this.children['Bottom_container'].setVolume(percent * 100);
         },
+        setDragPlay: function(time) {
+            this.children['Patch'].catchControlStatusChange(MODE.DRAG, {
+                'time': time
+            });
+        },
         enableDrag: function(bool) {
             this.children['Bottom_container'].enableDrag(bool);
         },
@@ -5301,7 +5320,8 @@ qcVideo('UiControl', function($, Base, util, constants, version) {
         END: 'end',
         FULL: 'full',
         QUIT_FULL: 'quitfull',
-        RESIZE: 'RESIZE'
+        RESIZE: 'RESIZE',
+        DRAG: 'DRAG'
     };
     return UiControl;
-}); /*  |xGv00|5fa57fbb4702a22227fa35280efb04dc */
+}); /*  |xGv00|3d3da90ea16e304e1eed429b38e0bf3f */

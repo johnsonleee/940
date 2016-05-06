@@ -3,89 +3,80 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="scripts/js/jquery-1.8.2.min.js"></script>
 </head>
 
-<body ng-app="myApp" ng-controller="ensureUnique">
-<ul>
-    {{industries.list[0].title}}
-</ul>
+<body>
 
-
+<img id="picshow" width="200" height="200" src="" />
+<form id="uploadForm" action="Upload" method="post" enctype="multipart/form-data">
+    <input id="File1" name="fileupload" accept="image/*" multiple="multiple" type="file" value="" />
+    <input id="btnImportOK" type="button" value="上传" />
+</form>
+<script src="~/Scripts/jquery-1.8.3.min.js"></script>
 <script type="text/javascript">
-    var myApp = angular.module('myApp',[]);
-    myApp.controller('ensureUnique',function ($scope,$http) {
-        $http.jsonp('http://www.940.com/videoList?page=1&line=4&type=2&callback=JSON_CALLBACK',
-                /* {languageColumn:'name_eu'},*/
-                {'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'})
-                .success(function (data) {
-                    $scope.industries = data;
 
-                });
-    });
-    //  The name of the callback should be the string JSON_CALLBACK.
-/*function getData($scope,$http){*/
- /*   var url="http://www.940.com/videoList?page=1&line=4&type=2&callback=?";
-    $http.jsonp(url).success(function(data){
 
-        console.log(data);
-    })*/
 
- /*   var myApp = angular.module('myApp',[]);
-  $http.jsonp("http://www.940.com/videoList?page=1&line=4&type=2&callback=?")
-  .success(function(data){
-  alert(data);
-  });
-    myApp.controller('ensureUnique',function ($scope,$http) {
-        $http.jsonp('http://www.940.com/videoList?page=1&line=4&type=2&callback=?').success(
-                function(data){
-                    $scope.list = data;
-                    alert(data);
-                })
-                .error(
-                function(data){
-                    alert("error");
+
+
+    $(document).ready(function () {
+        $("#btnImportOK").click(function () {
+
+            var formData = new FormData($("#uploadForm")[0]);
+            console.log(formData);
+            $.ajax({
+                type: "POST",
+                data: formData,
+                url: "http://940.com/upload?id_good=1066063",
+                dataType:"jsonp",
+                jsonp: 'callback',
+                contentType: false,
+                processData: false
+            }).success(function (data) {
+                console.log(data);
+                if (data.status) {
+                    // 记录当前时间戳
+                    var start_time = new Date().getTime();
+
+                    // 创建对象
+                    var img = new Image();
+
+                    // 改变图片的src
+                    // img.src = data.url; 此处注释是因为上传保存是路径是本地磁盘 浏览器被阻止访问 所以用了一个远程图片
+                    img.src = "http://a0.att.hudong.com/05/23/01300000727181126443238971302.jpg";
+                    // 定时执行获取宽高
+                    var check = function () {
+                        console.log(img.width);
+                        // 只要任何一方大于0
+                        // 表示已经服务器已经返回宽高
+                        if (img.width > 0 || img.height > 0) {
+
+                            clearInterval(set);
+
+                            if (img.width > 210 || img.height > 210 || img.width < 190 || img.height < 190) {
+                                alert('建议列表图片尺寸为200*200');
+                                return;
+                            }
+                            $("#picshow").attr("src", img.src);
+                            $("#picshow").show();
+                        }
+                    };
+
+                    var set = setInterval(check, 40);
+                } else {
+                    console.log(data.msg);
                 }
-        );
-    });*/
+
+            }).error(function (data) {
+                alert(data);
+                console.log(data);
+            });
+
+        });
+        $("#picshow").hide();
+    });
 </script>
 
-
-
-
-
-
-<!--<script>
-    var test=angular.module('testApp',[]);
-        myUrl = "http://www.940.com/videoList?page=1&line=4&type=2&callback=?";
-        $http.jsonp(myUrl).then(function (data) {
-            alert(data);
-        });
-   /* var test=angular.module('testApp',[]);
-    test.directive("direct",function(){
-        return{
-            restrict: 'ECMA',
-            template: '<div>{{ title }}</div>'+'<div><ul><li ng-repeat="x in contents">{{ x.text }}</li></ul></div>',
-            scope:{
-                getTitle:'&',
-                getContent:'&'
-            },
-            controller:function($scope){
-                $scope.title=$scope.getTitle();    //调用无参函数
-                $scope.contents=$scope.getContent();    //调用无参函数
-            }
-        }
-    })
-            .controller("nameController",function($scope){
-                $scope.title="标题";
-
-                $scope.contents =[{text:1234},{text:5678}];
-            });*/
-</script>-->
-
-
-<div ng-controller="nameController">
-    <direct get-title="title" get-content="contents"></direct>
-</div>
 </body>
 </html>

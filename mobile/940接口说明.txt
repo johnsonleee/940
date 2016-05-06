@@ -41,7 +41,7 @@ noticeInfo?id=4
 	  1
 学员分享
 shareSubmit
-参数：real_name   真实姓名 var id=url.match(/id=.{1}/)[0].substr(3);
+参数：real_name   真实姓名
 	  user_name   账号
 	  content 	  内容
 	  time	      时间 格式：2015-12-12 12:12:12
@@ -117,12 +117,7 @@ unBindPhone
 http://127.0.0.1:8088/unBindPhone?user_name=test1@sududa.com&code=842949
 {"tips":"操作成功！","status":"1"}
 
-上传图片
-参数：
-id_goods是用户信息的一个参数，每个用户都有一个唯一的id_goods,请求用户信息接口"o":"1000473"
 
-获取html中的file类型，自己获取，保存到本地
-http://127.0.0.1:8088/upload?id_good=1000473
 
 保存/修改 (修改的时候)用户信息
 

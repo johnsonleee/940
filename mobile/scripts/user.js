@@ -3,10 +3,10 @@
     document.addEventListener('DOMContentLoaded', function() {
         var html = document.documentElement;
         var windowWidth = html.clientWidth;
-        // if (windowWidth >= 540) {
-        //     windowWidth = 540;
-        // }
         html.style.fontSize = windowWidth / 6.4 + 'px';
+        // if (windowWidth > 1000) {
+        //     html.style.fontSize = 100 + 'px';
+        // }
     }, false);
 })();
 
@@ -132,7 +132,7 @@ $(function() {
             pesonal += "<div class='users'>" +
                 "<div class='users-personal'>" +
                 "<dl>" +
-                "<dt><img src='" + data.im + "'></dt>" +
+                "<dt><img src='http://www.940.com/" + data.im + "'></dt>" +
                 "<dd>" +
                 "<i>学员：" + data.r + "</i>" +
                 "</dd>" +
@@ -240,64 +240,12 @@ $(function() {
                 "<div class='select_arrow'></div>" +
                 "<div class='select_text_ui' style='min-width: 2.5em;'>北京</div>" +
                 "<select class='province' required='true' name='birthday_year'>" +
-                "undefined" +
-                "<option value='北京'>北京</option>" +
-                "<option value='天津'>天津</option>" +
-                "<option value='河北'>河北</option>" +
-                "<option value='山西'>山西</option>" +
-                "<option value='内蒙古'>内蒙古</option>" +
-                "<option value='辽宁'>辽宁</option>" +
-                "<option value='吉林'>吉林</option>" +
-                "<option value='黑龙江'>黑龙江</option>" +
-                "<option value='上海'>上海</option>" +
-                "<option value='江苏'>江苏</option>" +
-                "<option value='浙江'>浙江</option>" +
-                "<option value='安徽'>安徽</option>" +
-                "<option value='福建'>福建</option>" +
-                "<option value='江西'>江西</option>" +
-                "<option value='山东'>山东</option>" +
-                "<option value='河南'>河南</option>" +
-                "<option value='湖北'>湖北</option>" +
-                "<option value='湖南'>湖南</option>" +
-                "<option value='广东'>广东</option>" +
-                "<option value='广西'>广西</option>" +
-                "<option value='海南'>海南</option>" +
-                "<option value='重庆'>重庆</option>" +
-                "<option value='四川'>四川</option>" +
-                "<option value='贵州'>贵州</option>" +
-                "<option value='云南'>云南</option>" +
-                "<option value='西藏'>西藏</option>" +
-                "<option value='陕西'>陕西</option>" +
-                "<option value='甘肃'>甘肃</option>" +
-                "<option value='青海'>青海</option>" +
-                "<option value='宁夏'>宁夏</option>" +
-                "<option value='新疆'>新疆</option>" +
-                "<option value='香港'>香港</option>" +
-                "<option value='澳门'>澳门</option>" +
                 "</select>" +
                 "</div>" +
                 "<div class='select_ui'>" +
                 "<div class='select_arrow'></div>" +
                 "<div class='select_text_ui' style='min-width: 2.5em;'>西城</div>" +
                 "<select class='city' required='true' name='birthday_year'>" +
-                "<option value='西城'>西城</option>" +
-                "<option value='东城'>东城</option>" +
-                "<option value='崇文'>崇文</option>" +
-                "<option value='宣武'>宣武</option>" +
-                "<option value='朝阳'>朝阳</option>" +
-                "<option value='海淀'>海淀</option>" +
-                "<option value='丰台'>丰台</option>" +
-                "<option value='石景山'>石景山</option>" +
-                "<option value='门头沟'>门头沟</option>" +
-                "<option value='房山'>房山</option>" +
-                "<option value='通州'>通州</option>" +
-                "<option value='顺义'>顺义</option>" +
-                "<option value='大兴'>大兴</option>" +
-                "<option value='昌平'>昌平</option>" +
-                "<option value='平谷'>平谷</option>" +
-                "<option value='怀柔'>怀柔</option>" +
-                "<option value='密云'>密云</option>" +
-                "<option value='延庆'>延庆</option>" +
                 "</select>" +
                 "</div>" +
                 "</div>" +
@@ -308,25 +256,29 @@ $(function() {
                 "<div class='upload'>" +
                 "<dl>" +
                 "<dt id='fileList'>" +
-                "<img src='" + data.im + "'>" +
+                "<img src='http://www.940.com/" + data.im + "'>" +
                 "</dt>" +
+                // 不可以删
                 "<dd>"+
-                "<form id='imgurlform'   target='form'  enctype='multipart/form-data' method='post' action='http://www.940.com/upload?id_good='"+data.o+"?&client=1'>" +
-                " <input type='hidden' name='id_good' value='"+data.o+"'><input type='file' name='file1' id='filename' onchange='handleFiles(this)'><br/>" +
-                " <input type='submit' id='imgsubmit' value='提交'>" +
-                " </form>"+
-                "</dd>"+
-                //"<form id='uploadForm' target='form' method='post' enctype='multipart/form-data' action='http://940.com/upload'>"+
-               // "<dd>" +
-                //"<p>上传支持JPG、PNG、BMP格式，</p>" +
-               // "<p>不超过150KB最佳尺寸为145x145像素。</p>" +
-              //  "</dd>" +
-               // "<dd class='ipt'>" +
-                //"<a href='###' onchange='handleFiles(this)'>点此更换图片</a>" +
-              // "<input onchange='javascript:setImagePreview();' id='id_good' value='1000473'>"+
-                //"<input type='file' id='fileElem' multiple accept='image/*' onchange='handleFiles(this)'>" +
-               // "</dd>" +
+                "<form id='imgurlform'   target='form'  enctype='multipart/form-data' method='post' action='/upload?id_good=" + data.o + "&client=1'>" +
+                "<input type='hidden' name='id_good' value='" + data.o + "'><input type='file' name='file1' id='filename' onchange='handleFiles(this)'><br/>" +
+                "<input type='submit' id='imgsubmit' value='提交'>" +
                 "</form>"+
+                "</dd>"+
+                // 不可以删
+/*                "<form id='uploadForm' target='form' method='post' enctype='multipart/form-data' action=''>"+
+                "<dd>" +
+                "<p>上传支持JPG、PNG、BMP格式，</p>" +
+                "<p>不超过150KB最佳尺寸为145x145像素。</p>" +
+                "</dd>" +
+                "<dd class='ipt'>" +
+                "<a href='###' onchange='handleFiles(this)'>点此更换图片</a>" +
+                "<input onchange='javascript:setImagePreview();' id='imgusrc'>"+
+                // type='file'
+                "<input type='' id='fileElem' multiple accept='image/*' onchange='handleFiles(this)'>" +
+                "</dd>" +
+                "</form>"+*/
+                // 
                 "<iframe id='iframe' name='form' style='display:none;'></iframe>"+
                 "</dl>" +
                 "</div>" +
@@ -341,12 +293,14 @@ $(function() {
             list.append(pesonal);
         }
     });
+
+    // 上传图片
     var ajaxPane1 = $('#imgurlform');
     ajaxPane1.bind('submit', function(event) {
-        ajaxPane1.attr('action','http://m.940.com/upload?id_good='+$(".membero").html().replace(/[^0-9]/ig,""))+"&client=1";
+        ajaxPane1.attr('action', '/upload?callback=?&id_good=' + $(".membero").html().replace(/[^0-9]/ig, "")) + "&client=1";
         alert(1);
         event.preventDefault();
-        var imgurl='http://m.940.com/upload?id_good='+$(".membero").html().replace(/[^0-9]/ig,"");
+        var imgurl = '/upload?callback=?&id_good=' + $(".membero").html().replace(/[^0-9]/ig, "");
         var formData = new FormData($("#imgurlform")[0]);
         $.ajax({
             url: imgurl,
@@ -354,48 +308,51 @@ $(function() {
             data: formData,
             async: false,
             cache: false,
-            dataType:'json',
+            dataType: 'jsonp',
             // jsonp: 'callback',
             contentType: false,
             processData: false,
-            success: function (data) {
+            success: function(data) {
                 alert(data.tips);
             },
-            error: function (data) {
+            error: function(data) {
                 alert(data.tips);
             }
         });
         return false;
     });
+
     // 修改-提交
     var ajaxPane = $('.free-pane');
     ajaxPane.bind('submit', function(event) {
         event.preventDefault();
         var r = /<[^>]*>/g;
-        document.domain = "m.940.com";
-        var forprofile=$(window.frames['form'].document.body).html();
-       /* var forprofile=$("#iframe").text();*/
-       var  jsonimg=$.parseJSON(forprofile);
-       console.log(jsonimg.file_url);
-        console.log(forprofile);
+        // document.domain = "www.940.com";
+        // alert(1);
+        var forprofile = $(window.frames['form'].document.body).html();
+        // alert(2);
+        // var forprofile=$("#iframe").text();
+        var jsonimg = $.parseJSON(forprofile);
+        // console.log(jsonimg.file_url);
+        // console.log(forprofile);
         var modify = $.param({
             user_name: json_data.u,
             qq: $(".modify-qq").text(),
             yy: $(".modify-yy").text(),
             gender: $("i.selected").attr("data-s"),
-            profile:jsonimg.file_url,
+            profile: jsonimg.file_url,
             address: $thisdress,
-            realname:function(){
-                return  $(".modify-name").val()?0:$(".modify-name").val();
+            realname: function() {
+                return $(".modify-name").val() ? 0 : $(".modify-name").val();
             },
             password: json_data.password
         });
         $.ajax({
             async: false,
-            type: "post",
-            url: 'http://www.940.com/saveUserInfo',
-            dataType: 'json',
-            // jsonp: 'callback',
+            type: "POST",
+            url: 'http://940.com/saveUserInfo',
+            dataType: 'jsonp',
+            jsonp: 'callback',
             data: modify,
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
             success: function(data) {
@@ -412,51 +369,8 @@ $(function() {
                 }
             }
         });
-
     });
 
-    // // 修改-提交
-    // var ajaxPane = $('.free-pane');
-    // ajaxPane.bind('submit', function(event) {
-    //     event.preventDefault();
-    //     var modify = $.param({
-    //         user_name: json_data.u,
-    //         qq: $(".modify-qq").text(),
-    //         yy: $(".modify-yy").text(),
-    //         gender: $("i.selected").attr("data-s"),
-    //         profile: $("#fileList img").attr("src"),
-    //         address: $(".modify-city").text(),
-    //         /* realname: $(".modify-name").text(),*/
-    //         realname:function(){
-    //             return  $(".modify-name").val()?0:$(".modify-name").val();
-    //         },
-    //         password: json_data.password
-    //     });
-    //     $.ajax({
-    //         async: false,
-    //         type: "get",
-    //         url: 'http://940.com/saveUserInfo',
-    //         dataType: 'jsonp',
-    //         jsonp: 'callback',
-    //         data: modify,
-    //         contentType: "application/x-www-form-urlencoded; charset=utf-8",
-    //         success: function(data) {
-    //             data = formatData(data);
-    //             console.log(modify);
-
-    //             var item = data.sududa;
-    //             console.log(item.tips);
-    //             if (item.status == 1) {
-    //                 alert(item.tips);
-    //             } else if (item.status == -9) {
-    //                 alert(item.tips);
-    //             } else {
-    //                 alert("item.tips");
-    //             }
-    //         }
-    //     });
-
-    // });
 
 
 });

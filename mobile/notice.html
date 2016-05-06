@@ -26,9 +26,9 @@
 <div id="menu" class="menu">
     <ul>
         <li>
-            <a href="###">
+            <a href="login.html">
                 <i class="menu-icon1"></i>
-                <span>907350373@qq.com</span>
+                <span>登录</span>
             </a>
         </li>
         <li>
@@ -61,12 +61,12 @@
                 <span>讲师团队</span>
             </a>
         </li>
-        <li>
+<!--         <li>
             <a href="###">
                 <i class="menu-icon7"></i>
                 <span>退出登录</span>
             </a>
-        </li>
+        </li> -->
     </ul>
 </div>
 
@@ -95,7 +95,7 @@
 
             <!-- 公告详情 -->
             <div class="wrap_list" id="wrap_list">
-                <div class="gonggao">
+<!--                 <div class="gonggao">
                     <h1>天猫国际年货节落地天津 将建O2O体验中心</h1>
                     <strong>亲爱的互联支付用户：</strong>
                     <p>
@@ -115,7 +115,7 @@
                             <a href="javascript:" class="next">2016淘宝店铺运营方法解读-最新淘宝干货分享</a>
                         </p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -132,7 +132,7 @@
             <a href="courses.html">
                 <img src="content/images/940/footer_icon3.jpg" alt="课程介绍">
             </a>
-            <a href="#">
+            <a href="enrolled.html">
                 <img src="content/images/940/footer_icon4.jpg" alt="在线报名">
             </a>
             <a href="#" class="footer-animation">
@@ -156,9 +156,9 @@ $(function(){
         a = /Array/.test(d) ? r : a[0] = r;
         return a;
     }
-    var url =location.href+"?id=1";
-    var id=url.match(/id=.{1}/)[0].substr(3);
-    var   paramid = $.param({
+    var url = location.href + "?id=1";
+    var id = url.match(/id=.{1}/)[0].substr(3);
+    var paramid = $.param({
         id: id
     });
     $.ajax({
@@ -174,6 +174,7 @@ $(function(){
             var wrapList = $(".wrap_list");
             if (data.status == 1) {
                 var item = data.notice;
+                // 最大值
                 console.log(item.content.length);
                 var lastid=data.last;
                 var nextid=data.next;
@@ -181,21 +182,36 @@ $(function(){
                 wrapList.html("");
                    var  content = "";
 
-                if(lastid.id==0){
-                    var first="<a class='last' href=\'#\'>没有了</a>";
-                }else{
-                   var first="<a class='last' href=\"notice.html?id=" + lastid.id + "\">" + lastid.title + "</a>";
-                }
+                   if (lastid.id==0) {
+                        var first = "<a class='last' href=\"###\">没有了</a>";
+                   }else{
+                        var first = "<a class='last' href=\"notice.html?id=" + lastid.id + "\">" + lastid.title + "</a>";
+                   }
+                   if (lastid.id==8) {
+                        var flast = "<a class='last' href=\"###\">没有了</a>";
+                   }else{
+                        var flast = "<a class='next' href=\"notice.html?id=" + nextid.id + "\">" + nextid.title + "</a>";
+                   }
+
                         content += "<div class='gonggao'>" +
                             "<h1>" + item.title + "</h1>" +
                             "<strong>亲爱的互联支付用户：</strong>" +
                             "<p>" + item.content + "</p>" +
-                            "<div class='right'>" + item.author + "<br>" + item.time.substr(0.10) + "</div>" +
+                            "<div class='right'>" + item.author + "<br>" + item.time.substr(0,19) + "</div>" +
                             "<div class='left'>" +
-                            "<p>上一条："+first+"</a></p>" +
-                            "<p>下一条：<a class='next' href=\"notice.html?id=" + nextid.id + "\">" + nextid.title + "</a></p>" +
+                            "<p>上一条：" + first + "</p>" +
+                            "<p>下一条：" + flast + "</p>" +
                             "</div>" +
                             "</div>";
+
+                // 000000
+                // var notice = "";
+                // notice = "";
+                // var reg = /\d+/g;
+                // notice += item.content;
+                // var str=notice.replace(/(\d+、[s\S]+)?&nbsp;/g, '');
+                // wrapList.append(str);
+
                 wrapList.append(content);
             }
 

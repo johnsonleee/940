@@ -1,7 +1,13 @@
 html,body{margin:0;padding:0;border:0;outline:0;width:100%;height:100%;-webkit-text-size-adjust:none;-webkit-font-smoothing:antialiased}html{font-size:50px}
 ul,ol,li,dl,dt,dd{list-style-type:none;margin:0;padding:0}a{text-decoration:none;outline:0;cursor:pointer}a,button,input,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0)}
 ins{text-decoration:none}img{border:0;outline:0;max-width:100%;height:auto;width:auto9;-ms-interpolation-mode:bicubic}strong{font-weight:normal}b{font-weight:normal}
-i{font-style:normal}body{background-color:#fff;font-family:'方正兰亭细黑简';font-size:.18rem}.menu{background-color:#22273b;background-image:linear-gradient(145deg,#22273b,#22273b)}
+i{font-style:normal}body{background-color:#fff;font-family:'方正兰亭细黑简';font-size:.18rem}.menu{background-color:#434343;background-image:linear-gradient(145deg,#434343,#434343)}
+.menu ul{width:calc(100% - 1.2rem);width:-webkit-calc(100% - 1.2rem);margin:.2rem .6rem 0;float:left}.menu ul li{height:.88rem;line-height:.88rem;font-family:'微软雅黑';font-size:.3rem;margin:.2rem;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+.menu ul li a{color:#b5b5b5;display:block;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}.menu ul li i{width:.5rem;height:.88rem;float:left}
+.menu ul li .menu-icon1{background:url('../images/user/menu-icon1.png') no-repeat center left;background-size:.46rem .5rem}.menu ul li .menu-icon2{background:url('../images/user/menu-icon2.png') no-repeat center left;background-size:.45rem .4rem}
+.menu ul li .menu-icon3{background:url('../images/user/menu-icon3.png') no-repeat center left;background-size:.4rem .4rem}.menu ul li .menu-icon4{background:url('../images/user/menu-icon4.png') no-repeat center left;background-size:.48rem .29rem}
+.menu ul li .menu-icon5{background:url('../images/user/menu-icon5.png') no-repeat center left;background-size:.41rem .46rem}.menu ul li .menu-icon6{background:url('../images/user/menu-icon6.png') no-repeat center left;background-size:.49rem .41rem}
+.menu ul li .menu-icon7{background:url('../images/user/menu-icon7.png') no-repeat center left;background-size:.45rem .45rem}.menu ul li span{margin-left:.2rem}
 .panel{min-height:100%;background-color:#fff}.btn-hamburger{width:30px;height:22px;border:0;position:absolute;top:14px;left:12px;outline:0;background:url('../images/mobileInternet/menu.png') no-repeat center center}
 .menu,.slideout-menu{position:fixed;left:0;top:0;bottom:0;right:0;z-index:0;width:5rem;-webkit-overflow-scrolling:touch;display:none}.panel,.slideout-panel{position:relative;z-index:1}
 .slideout-open,.slideout-open body{overflow:hidden}.slideout-open .slideout-menu{display:block}.header{position:relative;width:100%;height:.88rem;background-color:#ec6517}
@@ -9,7 +15,7 @@ i{font-style:normal}body{background-color:#fff;font-family:'方正兰亭细黑�
 .header-menu i{background:url('../images/940/header-user.png') no-repeat center center;background-size:100% 100%}.header-title{width:calc(100% - 1.92rem);width:-webkit-calc(100% - 1.92rem);height:.88rem;float:left}
 .header-title i{width:2.36rem;height:.36rem;display:block;margin:.26rem auto;background:url('../images/940/header-title.png') no-repeat center center;background-size:100% 100%}
 #id_video_container{width:100%}.describe{width:100%}.describe .describe-cont{width:calc(100% - .6rem);width:-webkit-calc(100% - .6rem);margin:0 .3rem}
-.describe .describe-tilte{width:100%;height:1rem;line-height:1.2rem;font-size:.28rem;color:#626262}.describe .describe-nbr{width:100%;height:.3rem;line-height:.3rem}
+.describe .describe-tilte{width:100%;height:.98rem;line-height:1.2rem;font-size:.28rem;color:#626262}.describe .describe-nbr{width:100%;height:.3rem;line-height:.3rem}
 .describe-nbr .describe-left{width:1.77rem;height:.3rem;float:left}.describe-nbr .describe-left .icon1{width:.3rem;height:.3rem;background:url('../images/video/describe-left.png') no-repeat center center;background-size:100% 100%;float:left}
 .describe-nbr .describe-right{width:calc(100% - 1.77rem);width:-webkit-calc(100% - 1.77rem);height:.3rem;float:left}.describe-nbr .describe-right .icon2{width:.36rem;height:.3rem;background:url('../images/video/describe-right.png') no-repeat center center;background-size:100% 100%;float:left}
 .describe-nbr .describe-left span,.describe-nbr .describe-right span{padding:0 .13rem;font-size:.24rem;color:#f18800;float:left}.describe-text{width:100%;height:100%;margin-top:.28rem}
